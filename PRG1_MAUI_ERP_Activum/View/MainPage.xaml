@@ -1,21 +1,83 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:sys="clr-namespace:System;assembly=netstandard"
              x:Class="PRG1_MAUI_ERP_Activum.View.MainPage"
              Title="Start">
 
     <ScrollView>
-        <VerticalStackLayout
-            Padding="30,0"
-            Spacing="25">
-            <Label
-                Padding="20"
-                Text="Start"
-                Style="{StaticResource Headline}"
-                SemanticProperties.HeadingLevel="Level1" />
+        <Grid Padding="20"
+              RowDefinitions="Auto,30,40,Auto,Auto,20,Auto,Auto,50,Auto,Auto,Auto, Auto"
+              ColumnDefinitions="*,Auto"
+              RowSpacing="10">
+
+            <Label Grid.Row="0" Grid.ColumnSpan="2"
+                   Padding="20"
+                   Text="Activum"
+                   Style="{StaticResource Headline}"
+                   SemanticProperties.HeadingLevel="Level1" />
+
+            <Label Grid.Row="1" Grid.ColumnSpan="2"
+                   Text="Kundnummer / Personnummer"
+                   FontAttributes="Bold"
+                   Margin="0,0,0,4"/>
+
+            <Entry x:Name="CustomerIdEntry"
+                   Grid.Row="2"
+                   Grid.Column="0"
+                   Placeholder="Ange kundnr/personnr"
+                   ReturnType="Search"
+                   Completed="OnSearchCompleted" />
+
+            <ImageButton x:Name="SearchButton"
+                         Grid.Row="2"
+                         Grid.Column="1"
+                         Source="search.png"
+                         BackgroundColor="Transparent"
+                         HeightRequest="20"
+                         WidthRequest="20"
+                         Margin="10,0,0,0"
+                         Aspect="AspectFill"
+                         Clicked="OnSearchClicked" />
+
+            <Label Grid.Row="4" Grid.ColumnSpan="2"
+                   Text="Försäkringar aktuell kund"
+                   FontAttributes="Bold"
+                   Margin="0,30,0,4"/>
+
+            <Label x:Name="InsuranceStatusLabel"
+                   Grid.Row="5"
+                   Grid.ColumnSpan="2"
+                   Text="Ingen sökning ännu"
+                   TextColor="Gray" />
+
+            <Label Grid.Row="6" Grid.ColumnSpan="2"
+                   Text="Skadeståndsanmälan (anteckningar)"
+                   FontAttributes="Bold"
+                   Margin="0,30,0,4"/>
+
+            <Editor x:Name="NotesEditor"
+                    Grid.Row="7"
+                    Grid.ColumnSpan="2"
+                    HeightRequest="160"
+                    AutoSize="TextChanges" />
+
+            <Label Grid.Row="8" Grid.ColumnSpan="2"
+                   Text="Datum skadeanmälan mottogs"
+                   FontAttributes="Bold"
+                   Margin="0,20,0,4"/>
+
+            <DatePicker x:Name="DatePickerField"
+                        Grid.Row="9"
+                        Grid.ColumnSpan="2"
+                        Date="{x:Static sys:DateTime.Today}" />            
             
-            <Button Text="Not functional yet"/>
-        </VerticalStackLayout>
+            <Button Grid.Row="10" Grid.ColumnSpan="2"
+                    Text="Spara anteckning"
+                    Margin="0,20,0,0"
+                    Clicked="OnSaveNotesClicked" />
+
+        </Grid>
     </ScrollView>
 
 </ContentPage>
