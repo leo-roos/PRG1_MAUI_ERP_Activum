@@ -3,13 +3,55 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="PRG1_MAUI_ERP_Activum.View.CustomersPage"
              Title="Kunder">
-    <VerticalStackLayout>
-        <Label
-            Padding="20"
-            Text="Kunder"
-            Style="{StaticResource Headline}"
-            SemanticProperties.HeadingLevel="Level1"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+    <ScrollView>
+        <VerticalStackLayout>
+            <Grid Padding="10"
+             RowDefinitions="Auto, Auto, Auto, Auto, Auto"
+             ColumnDefinitions="*, Auto, Auto"
+             RowSpacing="10"
+             ColumnSpacing="10"
+               >
+
+
+                
+                <Label Grid.Row="0" Grid.ColumnSpan="2"
+                 Padding="20"
+                 Text="Kunder"
+                 Style="{StaticResource Headline}"
+                 SemanticProperties.HeadingLevel="Level1"
+                 VerticalOptions="Center" 
+                 HorizontalOptions="Center" />
+
+                <Label Grid.Row="1" Grid.Column="0"
+                 Padding="0"
+                 Text="Sök personnummer/kontonummer" />
+
+                <Entry Grid.Row="2" Grid.Column="0"/>
+                
+                <Button Grid.Row="2" Grid.Column="1"
+                 Text="Sök"
+                 Clicked=""
+               />
+
+                <Label Grid.Row="3" Grid.ColumnSpan="2"
+                 Padding="20"
+                 Text="Aktuell Kundinformation"/>
+
+                <Label x:Name="CustomerInformationLabel"
+                 Padding="20"
+                 Grid.Row="4" Grid.ColumnSpan="2"
+                 Text="Ingen sökning gjord ännu!"
+                 TextColor="DimGray"/>
+
+                <Label x:Name="InsuranceInfo"/>
+                <Label x:Name="AccountNumber"/>
+                <Label x:Name="WrittenNotes"/>
+
+
+
+
+
+            </Grid>
+        </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>
