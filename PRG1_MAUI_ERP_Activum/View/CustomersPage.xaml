@@ -43,33 +43,33 @@
                />
 
                 <Label Grid.Row="3" Grid.ColumnSpan="2"
-                 Padding="20"
+                 Padding="10"
                  Text="Aktuell Kundinformation"
                  TextColor="Black"/>
 
                 <Label x:Name="CustomerInformationLabel"
-                 Padding="20"
+                 Padding="10"
                  Grid.Row="4" Grid.ColumnSpan="2"
                  Text="Ingen sökning gjord ännu!"
                  TextColor="DimGray"/>
 
                 <Label x:Name="CustomerName"
-                 Padding="20"
+                 Padding="10"
                  Grid.Row="4" Grid.ColumnSpan="2"
                  TextColor="Black"/>        
 
                 <Label x:Name="InsuranceInfo"
-                 Padding="20"
+                 Padding="10"
                  Grid.Row="5" Grid.ColumnSpan="2"
                  TextColor="Black"/>
                
                 <Label x:Name="AccountNumber"
-                 Padding="20"
+                 Padding="10"
                  Grid.Row="6" Grid.ColumnSpan="2"
                  TextColor="Black"/>
                 
                 <Label x:Name="WrittenNotes"
-                 Padding="20"
+                 Padding="10"
                  Grid.Row="7" Grid.ColumnSpan="2"
                  TextColor="Black"/>
 
