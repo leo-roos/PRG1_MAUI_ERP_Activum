@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ResourceDictionary 
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+
+    <Color x:Key="PageBackground">#d3dfe3</Color>
+    <Color x:Key="PageBackgroundDark">#131313</Color>
+
+    <Style x:Key="BasePageStyle" TargetType="ContentPage">
+        <Setter Property="BackgroundColor"
+            Value="{AppThemeBinding Light={StaticResource PageBackground}, Dark={StaticResource PageBackgroundDark}}" />
+    </Style>
+
+    <!--<Style TargetType="Label">
+        <Setter Property="TextColor" 
+            Value='#000000' />
+    </Style>
+
+    <Style TargetType="DatePicker">
+        <Setter Property="TextColor" 
+            Value='#000000' />
+    </Style>-->
+
+    <!--TODO: ändra scrollbar färg-->
+</ResourceDictionary>
