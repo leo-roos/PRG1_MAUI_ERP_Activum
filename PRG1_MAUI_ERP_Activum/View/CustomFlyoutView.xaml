@@ -10,15 +10,16 @@
 
     <!-- Denna är en layouthack, då FlyOut inte fungerar fullt ut i .NET 10. Än? -->
     
-    <ScrollView >
-        <VerticalStackLayout Padding="20" Spacing="30">
+    <ScrollView>
+        <VerticalStackLayout
+            HorizontalOptions="Start"
+            WidthRequest="300"
+            Padding="10"
+            Spacing="20">
 
             <!-- Menyrubrik -->
-            <Label Text="Activum"
-                   TextColor="White"
-                   FontSize="32"
-                   HorizontalOptions="Center" />
-            
+            <Image Source="logga_activum_vit.png" WidthRequest="200" HeightRequest="100" HorizontalOptions="Center" />
+
             <!-- Start -->
             <VerticalStackLayout Spacing="18">
                 <Grid ColumnDefinitions="40,*"
@@ -80,7 +81,7 @@
                 </Grid>
 
                 <!-- Verktyg. Ska inte gå att klicka på -->
-                <Grid ColumnDefinitions="40,*"
+                <Grid ColumnDefinitions="40, *, 20"
                       Padding="5">
                     <Grid.GestureRecognizers>
                         <TapGestureRecognizer 
@@ -89,13 +90,26 @@
 
                     <Image Source="tools_white.png"
                            WidthRequest="17"
-                           HeightRequest="17"
-                           />
+                           HeightRequest="17" />
 
                     <Label Grid.Column="1"
                            Text="Verktyg"
                            FontSize="20"
                            TextColor="White"/>
+
+                    <Image Grid.Column="2"
+                           WidthRequest="20"
+                           HeightRequest="20"
+                           Source="arrow_right_white.png">
+                        <Image.Triggers>
+                            <DataTrigger TargetType="Image"
+                                        Binding="{Binding IsToolsOpen}"
+                                        Value="True">
+                                <Setter Property="Source" Value="arrow_down_white.png" />
+                            </DataTrigger>
+                        </Image.Triggers>
+                    </Image>
+
                 </Grid>
 
                 <!-- Undermeny, under verktyg -->
