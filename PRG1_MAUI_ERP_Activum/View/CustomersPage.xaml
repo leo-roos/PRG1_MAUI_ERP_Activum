@@ -2,9 +2,13 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="PRG1_MAUI_ERP_Activum.View.CustomersPage"
-             Title="Kunder">
+             Title="Kunder"
+             BackgroundColor="White">
     <ScrollView>
         <VerticalStackLayout>
+            
+            
+            
             <Grid Padding="10"
              RowDefinitions="Auto, Auto, Auto, Auto, Auto"
              ColumnDefinitions="*, Auto, Auto"
@@ -20,22 +24,28 @@
                  Style="{StaticResource Headline}"
                  SemanticProperties.HeadingLevel="Level1"
                  VerticalOptions="Center" 
-                 HorizontalOptions="Center" />
+                 HorizontalOptions="Center" 
+                 TextColor="Black"/>
 
                 <Label Grid.Row="1" Grid.Column="0"
                  Padding="0"
-                 Text="Sök personnummer/kontonummer" />
+                 Text="Sök personnummer/kontonummer" 
+                 TextColor="Black"/>
 
-                <Entry Grid.Row="2" Grid.Column="0"/>
+                <Entry Grid.Row="2" Grid.Column="0"
+                 BackgroundColor="Gray"/>
                 
                 <Button Grid.Row="2" Grid.Column="1"
                  Text="Sök"
                  Clicked=""
+                 TextColor="White"
+                 BackgroundColor="Gray"
                />
 
                 <Label Grid.Row="3" Grid.ColumnSpan="2"
                  Padding="20"
-                 Text="Aktuell Kundinformation"/>
+                 Text="Aktuell Kundinformation"
+                 TextColor="Black"/>
 
                 <Label x:Name="CustomerInformationLabel"
                  Padding="20"
@@ -43,9 +53,25 @@
                  Text="Ingen sökning gjord ännu!"
                  TextColor="DimGray"/>
 
-                <Label x:Name="InsuranceInfo"/>
-                <Label x:Name="AccountNumber"/>
-                <Label x:Name="WrittenNotes"/>
+                <Label x:Name="CustomerName"
+                 Padding="20"
+                 Grid.Row="4" Grid.ColumnSpan="2"
+                 TextColor="Black"/>        
+
+                <Label x:Name="InsuranceInfo"
+                 Padding="20"
+                 Grid.Row="5" Grid.ColumnSpan="2"
+                 TextColor="Black"/>
+               
+                <Label x:Name="AccountNumber"
+                 Padding="20"
+                 Grid.Row="6" Grid.ColumnSpan="2"
+                 TextColor="Black"/>
+                
+                <Label x:Name="WrittenNotes"
+                 Padding="20"
+                 Grid.Row="7" Grid.ColumnSpan="2"
+                 TextColor="Black"/>
 
 
 
