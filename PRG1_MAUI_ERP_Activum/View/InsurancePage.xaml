@@ -13,34 +13,34 @@
             HorizontalOptions="Center" />
 
         <Grid
-            RowDefinitions="Auto, Auto, Auto, Auto, Auto"
+            RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto"
             ColumnDefinitions="75*, 25*"
-            RowSpacing="10"
+            RowSpacing="5"
             ColumnSpacing="10"
-            Padding="25"
+            Padding="50, 0"
         >
-            <Border Grid.Row="0" StrokeThickness="2"></Border>
-            <Label Grid.Row="0" Text="Typ" Padding="10" />
+            <Label Grid.Row="0" Text="Försäkrings Typ" />
 
-            <Border Grid.Row="0" Grid.Column="1" StrokeThickness="2"></Border>
-            <Label Grid.Row="0" Grid.Column="1" Text="Pris" Padding="10" />
+            <Label Grid.Row="0" Grid.Column="1" Text="Pris" HorizontalTextAlignment="End" />
 
-            <Label Grid.Row="1" Text="Hemförsäkring" />
-            <Label Grid.Row="1" Grid.Column="1" Text="250kr" />
+            <Border Grid.Row="1" Grid.ColumnSpan="2"></Border>
 
             <Label Grid.Row="2" Text="Hemförsäkring" />
-            <Label Grid.Row="2" Grid.Column="1" Text="250kr" />
+            <Label Grid.Row="2" Grid.Column="1" Text="250kr" HorizontalTextAlignment="End" />
 
-            <Label Grid.Row="3" Text="Hemförsäkring" />
-            <Label Grid.Row="3" Grid.Column="1" Text="250kr" />
+            <Label Grid.Row="3" Text="Hemförsäkring 2" />
+            <Label Grid.Row="3" Grid.Column="1" Text="250kr" HorizontalTextAlignment="End" />
 
-            <Label Grid.Row="4" Text="Hemförsäkring" />
-            <Label Grid.Row="4" Grid.Column="1" Text="250kr" />
+            <Label Grid.Row="4" Text="Hemförsäkring 3" />
+            <Label Grid.Row="4" Grid.Column="1" Text="250kr" HorizontalTextAlignment="End" />
+
+            <Label Grid.Row="5" Text="Hemförsäkring 4" />
+            <Label Grid.Row="5" Grid.Column="1" Text="250kr" HorizontalTextAlignment="End" />
         </Grid>
 
         <Label 
             Style="{StaticResource SubHeadline}"
-            Text="Registrera ny försäkring" />
+            Text="Registrera ny försäkring" Margin="0, 25, 0, 0" />
         <Grid
             RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, Auto"
             ColumnDefinitions="*, Auto"
@@ -56,12 +56,12 @@
             <Label Grid.Row="2" TextColor="LightGreen" Text="Kund Hittad - Maria Andersson" />
 
             <Label Grid.Row="3" Text="Välj försäkring" />
-            <Picker Grid.Row="4" Grid.ColumnSpan="2" x:Name="picker">
+            <Picker Grid.Row="4" Grid.ColumnSpan="2" x:Name="InsurancePicker">
                 <Picker.Items>
-                    <x:String>Hemförsäkring</x:String>
-                    <x:String>Hemförsäkring 2</x:String>
-                    <x:String>Hemförsäkring 3</x:String>
-                    <x:String>Hemförsäkring 4</x:String>
+                    <x:String>Hemförsäkring - 250kr</x:String>
+                    <x:String>Hemförsäkring 2 - 250kr</x:String>
+                    <x:String>Hemförsäkring 3 - 250kr</x:String>
+                    <x:String>Hemförsäkring 4 - 250kr</x:String>
                 </Picker.Items>
             </Picker>
 
