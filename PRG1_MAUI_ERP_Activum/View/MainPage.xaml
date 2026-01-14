@@ -3,7 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:sys="clr-namespace:System;assembly=netstandard"
              x:Class="PRG1_MAUI_ERP_Activum.View.MainPage"
-             Title="Start">
+             Title="Start"
+             Style="{StaticResource Key=BasePageStyle}">
 
     <ScrollView>
         <Grid Padding="20"
@@ -11,11 +12,10 @@
               ColumnDefinitions="*,Auto"
               RowSpacing="10">
 
-            <Label Grid.Row="0" Grid.ColumnSpan="2"
-                   Padding="20"
-                   Text="Activum"
-                   Style="{StaticResource Headline}"
-                   SemanticProperties.HeadingLevel="Level1" />
+            <Image Grid.Row="0" Grid.ColumnSpan="2"
+                   Source="{AppThemeBinding Light='logga_activum_svart.png', Dark='logga_activum_vit.png'}"
+                   WidthRequest="200"
+                   HeightRequest="100" />
 
             <Label Grid.Row="1" Grid.ColumnSpan="2"
                    Text="Kundnummer / Personnummer"
@@ -32,7 +32,7 @@
             <ImageButton x:Name="SearchButton"
                          Grid.Row="2"
                          Grid.Column="1"
-                         Source="search_white.png"
+                         Source="{AppThemeBinding Light='search.png', Dark='search_white.png'}"
                          BackgroundColor="Transparent"
                          HeightRequest="20"
                          WidthRequest="20"
