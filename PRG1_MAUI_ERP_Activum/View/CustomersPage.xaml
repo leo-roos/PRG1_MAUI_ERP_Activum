@@ -12,7 +12,7 @@
             <Grid Padding="10"
              RowDefinitions="Auto, Auto, Auto, Auto, Auto"
              ColumnDefinitions="*, Auto, Auto"
-             RowSpacing="10"
+             RowSpacing="5"
              ColumnSpacing="10"
                >
 
