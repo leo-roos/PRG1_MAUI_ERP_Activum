@@ -6,77 +6,68 @@
              Style="{StaticResource Key=BasePageStyle}">
     <ScrollView>
         <VerticalStackLayout>
-            
-            
-            
-            <Grid Padding="10"
-             RowDefinitions="Auto, Auto, Auto, Auto, Auto"
-             ColumnDefinitions="*, Auto, Auto"
-             RowSpacing="5"
-             ColumnSpacing="10"
-               >
+            <Grid
+                Padding="20"
+                RowDefinitions="Auto, Auto, Auto, Auto, Auto"
+                ColumnDefinitions="*, Auto"
+                RowSpacing="5"
+                ColumnSpacing="10"
+            >
+                <Label 
+                    Grid.Row="0" Grid.ColumnSpan="2"
+                    Padding="20"
+                    Text="Kunder"
+                    Style="{StaticResource Headline}"
+                    SemanticProperties.HeadingLevel="Level1"
+                    VerticalOptions="Center" 
+                    HorizontalOptions="Center" />
 
+                <Label 
+                    Grid.Row="1" Grid.Column="0"
+                    Padding="0"
+                    Text="Sök Kundnummer / Personnummer"
+                    FontAttributes="Bold" />
 
-                
-                <Label Grid.Row="0" Grid.ColumnSpan="2"
-                 Padding="20"
-                 Text="Kunder"
-                 Style="{StaticResource Headline}"
-                 SemanticProperties.HeadingLevel="Level1"
-                 VerticalOptions="Center" 
-                 HorizontalOptions="Center" 
-                 TextColor="Black"/>
+                <Entry 
+                    Grid.Row="2" Grid.Column="0" />
 
-                <Label Grid.Row="1" Grid.Column="0"
-                 Padding="0"
-                 Text="Sök personnummer/kontonummer" 
-                 TextColor="Black"/>
+                <Button 
+                    Grid.Row="2" Grid.Column="1"
+                    Text="Sök" />
+            </Grid>
 
-                <Entry Grid.Row="2" Grid.Column="0"
-                 BackgroundColor="Gray"/>
-                
-                <Button Grid.Row="2" Grid.Column="1"
-                 Text="Sök"
-                 Clicked=""
-                 TextColor="White"
-                 BackgroundColor="Gray"
-               />
+            <Grid
+                 Padding="20, 0, 20, 20"
+                 RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto"
+                 ColumnDefinitions="*, Auto"
+                 RowSpacing="10"
+             >
+                <Label 
+                    Grid.Row="0" Grid.ColumnSpan="2"
+                    FontAttributes="Bold"
+                    Text="Aktuell Kundinformation" />
 
-                <Label Grid.Row="3" Grid.ColumnSpan="2"
-                 Padding="10"
-                 Text="Aktuell Kundinformation"
-                 TextColor="Black"/>
+                <Label 
+                    x:Name="CustomerInformationLabel"
+                    Grid.Row="1" Grid.ColumnSpan="2"
+                    Text="Ingen sökning gjord ännu!"
+                    TextColor="DimGray" />
 
-                <Label x:Name="CustomerInformationLabel"
-                 Padding="10"
-                 Grid.Row="4" Grid.ColumnSpan="2"
-                 Text="Ingen sökning gjord ännu!"
-                 TextColor="DimGray"/>
+                <Label 
+                    x:Name="CustomerName"
+                    Grid.Row="2" Grid.ColumnSpan="2" />
 
-                <Label x:Name="CustomerName"
-                 Padding="10"
-                 Grid.Row="4" Grid.ColumnSpan="2"
-                 TextColor="Black"/>        
+                <Label 
+                    x:Name="InsuranceInfo"
+                    Grid.Row="3" Grid.ColumnSpan="2" />
 
-                <Label x:Name="InsuranceInfo"
-                 Padding="10"
-                 Grid.Row="5" Grid.ColumnSpan="2"
-                 TextColor="Black"/>
-               
-                <Label x:Name="AccountNumber"
-                 Padding="10"
-                 Grid.Row="6" Grid.ColumnSpan="2"
-                 TextColor="Black"/>
-                
-                <Label x:Name="WrittenNotes"
-                 Padding="10"
-                 Grid.Row="7" Grid.ColumnSpan="2"
-                 TextColor="Black"/>
+                <Label
+                    x:Name="AccountNumber"
+                    Grid.Row="4" Grid.ColumnSpan="2" />
 
-
-
-
-
+                <Label
+                    x:Name="WrittenNotes"
+                    Grid.Row="5" Grid.ColumnSpan="2" />
             </Grid>
         </VerticalStackLayout>
     </ScrollView>
