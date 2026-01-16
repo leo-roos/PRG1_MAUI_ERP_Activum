@@ -2,14 +2,83 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="PRG1_MAUI_ERP_Activum.View.SupportPage"
-             Title="Hjälp &amp; Support">
+             Title="Hjälp &amp; Support"
+             Style="{StaticResource Key=BasePageStyle}">
     <VerticalStackLayout>
+        <Grid 
+            RowDefinitions="auto, auto, auto, auto, auto, auto, auto, auto"
+            ColumnDefinitions="*, auto"
+            RowSpacing="5">
+            
+        
         <Label
+            Grid.Row="1" Grid.ColumnSpan="1"
             Padding="20"
             Text="Hjälp &amp; Support"
+            TextColor="Black"
+          
             Style="{StaticResource Headline}"
             SemanticProperties.HeadingLevel="Level1"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
+
+        <Label
+            Grid.Row="2" Grid.ColumnSpan="1"
+            Padding="0, 0, 0, 30"
+            Text="Stöd för användning av systemet" 
+            TextColor="Black"
+            FontAttributes="Bold"
+            VerticalOptions="Center"
+            HorizontalOptions="Center"/>
+
+        <Label
+            Padding="10"
+            Grid.Row="3" Grid.ColumnSpan="1"
+            Text="Guider" 
+            Style="{StaticResource Headline}"
+            TextColor="Black"
+            VerticalOptions="Center"
+            HorizontalOptions="Center"
+            
+            />
+
+        <Label
+             Text="Dokumentation"
+             FontAttributes="Bold"
+             Grid.Row="4" Grid.ColumnSpan="1"
+             TextColor="Black"
+             VerticalOptions="Center"
+             HorizontalOptions="Center"
+             />
+            
+        <Label
+             Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer imperdiet, tortor ac vehicula maximus, sem augue elementum ante, ut posuere dolor lacus eget dolor. Nam tempor sapien turpis, non sodales arcu iaculis vel. Integer lacinia felis a lectus facilisis cursus. Quisque fermentum arcu sit amet mollis rutrum. Nam nec laoreet diam. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus in finibus risus. Mauris eu ipsum ac erat pellentesque pharetra id at leo. Praesent volutpat ornare enim nec hendrerit. Aenean egestas egestas leo et feugiat."
+             Grid.Row="5" Grid.ColumnSpan="1"
+             Padding="10"
+             TextColor="Black"
+             VerticalOptions="Center"
+             HorizontalOptions="Center"
+             />
+
+        <Label
+             Text="För frågor om regelverk, processer och tolkningar"
+             Grid.Row="6" Grid.ColumnSpan="1"
+             Padding="0, 20, 0, 0"
+             FontAttributes="Bold"
+             TextColor="Black"
+             VerticalOptions="Center"
+             HorizontalOptions="Center"
+             />
+
+        <Label
+              Text="activum@macrosoft.com"
+              
+              Grid.Row="7" Grid.ColumnSpan="1"
+              TextColor="Black"
+              VerticalOptions="Center"
+              HorizontalOptions="Center"
+              />
+
+        </Grid>
     </VerticalStackLayout>
 </ContentPage>

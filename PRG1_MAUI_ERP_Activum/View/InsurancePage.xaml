@@ -2,7 +2,8 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="PRG1_MAUI_ERP_Activum.View.InsurancePage"
-             Title="Försäkringar">
+             Title="Försäkringar"
+             Style="{StaticResource Key=BasePageStyle}">
     <VerticalStackLayout>
         <Label
             Padding="20"
@@ -11,5 +12,61 @@
             SemanticProperties.HeadingLevel="Level1"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
+
+        <Grid
+            RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto"
+            ColumnDefinitions="75*, 25*"
+            RowSpacing="5"
+            ColumnSpacing="10"
+            Padding="50, 0"
+        >
+            <Label Grid.Row="0" Text="Försäkrings Typ" />
+
+            <Label Grid.Row="0" Grid.Column="1" Text="Pris" HorizontalTextAlignment="End" />
+
+            <Border Grid.Row="1" Grid.ColumnSpan="2"></Border>
+
+            <Label Grid.Row="2" Text="Hemförsäkring" />
+            <Label Grid.Row="2" Grid.Column="1" Text="250kr" HorizontalTextAlignment="End" />
+
+            <Label Grid.Row="3" Text="Hemförsäkring 2" />
+            <Label Grid.Row="3" Grid.Column="1" Text="250kr" HorizontalTextAlignment="End" />
+
+            <Label Grid.Row="4" Text="Hemförsäkring 3" />
+            <Label Grid.Row="4" Grid.Column="1" Text="250kr" HorizontalTextAlignment="End" />
+
+            <Label Grid.Row="5" Text="Hemförsäkring 4" />
+            <Label Grid.Row="5" Grid.Column="1" Text="250kr" HorizontalTextAlignment="End" />
+        </Grid>
+
+        <Label 
+            Style="{StaticResource SubHeadline}"
+            Text="Registrera ny försäkring" Margin="0, 25, 0, 0" />
+        <Grid
+            RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, Auto"
+            ColumnDefinitions="*, Auto"
+            RowSpacing="15"
+            ColumnSpacing="10"
+            Padding="25"
+        >
+            <Label Grid.Row="0" Text="Sök kundnummer / personnummer" />
+            
+            <Entry Grid.Row="1" Grid.ColumnSpan="1" Placeholder="Kundnummer / Personnummer" />
+            <Button Grid.Row="1" Grid.Column="1" Text="Sök" />
+
+            <Label Grid.Row="2" TextColor="LightGreen" Text="Kund Hittad - Maria Andersson" />
+
+            <Label Grid.Row="3" Text="Välj försäkring" />
+            <Picker Grid.Row="4" Grid.ColumnSpan="2" x:Name="InsurancePicker">
+                <Picker.Items>
+                    <x:String>Hemförsäkring - 250kr</x:String>
+                    <x:String>Hemförsäkring 2 - 250kr</x:String>
+                    <x:String>Hemförsäkring 3 - 250kr</x:String>
+                    <x:String>Hemförsäkring 4 - 250kr</x:String>
+                </Picker.Items>
+            </Picker>
+
+            <Button Grid.Row="5" Grid.ColumnSpan="2" Text="Registrera försäkring" />
+        </Grid>
     </VerticalStackLayout>
 </ContentPage>

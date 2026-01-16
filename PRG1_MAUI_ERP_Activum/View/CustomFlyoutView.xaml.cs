@@ -8,6 +8,18 @@ public partial class CustomFlyoutView : ContentView
     public ICommand NavigateCommand { get; }
     public ICommand ToggleToolsCommand { get; }
 
+    private bool _isToolsOpen;
+    public bool IsToolsOpen
+    {
+        get => _isToolsOpen;
+        set
+        {
+            _isToolsOpen = value;
+            OnPropertyChanged();
+        }
+    }
+
+
     public CustomFlyoutView()
     {
         NavigateCommand = new Command<string>(async (page) =>
@@ -20,7 +32,8 @@ public partial class CustomFlyoutView : ContentView
         ToggleToolsCommand = new Command(() =>
         {
             Debug.WriteLine("[CustomFlyoutView] ToggleToolsCommand executed");
-            ToolsSubMenu.IsVisible = !ToolsSubMenu.IsVisible;
+            IsToolsOpen = !IsToolsOpen;
+            ToolsSubMenu.IsVisible = IsToolsOpen;
         });
 
         InitializeComponent();
