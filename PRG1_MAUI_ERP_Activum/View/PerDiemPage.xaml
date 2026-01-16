@@ -1,16 +1,59 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:sys="clr-namespace:System;assembly=netstandard"
              x:Class="PRG1_MAUI_ERP_Activum.View.PerDiemPage"
              Title="Traktamenten"
              Style="{StaticResource Key=BasePageStyle}">
-    <VerticalStackLayout>
-        <Label 
-            Padding="20"
-            Text="Traktamenten"
-            Style="{StaticResource Headline}"
-            SemanticProperties.HeadingLevel="Level1"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="16">
+            <Label
+                Text="Traktamenten"
+                Style="{StaticResource Headline}"
+                SemanticProperties.HeadingLevel="Level1"
+                VerticalOptions="Center" 
+                HorizontalOptions="Center" />
+
+            <Label Text="Reseperiod" FontAttributes="Bold" />
+            <HorizontalStackLayout Spacing="10">
+                <DatePicker x:Name="FromDatePicker" Date="{x:Static sys:DateTime.Today}" />
+                <Label Text="-" VerticalOptions="Center" FontSize="Medium" />
+                <DatePicker x:Name="ToDatePicker" Date="{x:Static sys:DateTime.Today}" />
+            </HorizontalStackLayout>
+
+            <Label Text="Typ av resa" FontAttributes="Bold" />
+            <Picker x:Name="TripTypePicker"
+                    Title="Välj typ av resa" />
+
+            <Picker x:Name="CountryPicker"
+                    Title="Välj land" />
+
+            <Label Text="Måltider" FontAttributes="Bold" />
+            <Grid ColumnDefinitions="Auto, *" RowDefinitions="35, 35, 35">
+                <CheckBox x:Name="BreakfastCheck" Grid.Row="0" Grid.Column="0" />
+                <Label Text="Frukost" Grid.Row="0" Grid.Column="1" VerticalOptions="Center" />
+                
+                <CheckBox x:Name="LunchCheck" Grid.Row="1" Grid.Column="0" />
+                <Label Text="Lunch" Grid.Row="1" Grid.Column="1" VerticalOptions="Center" />
+                
+                <CheckBox x:Name="DinnerCheck" Grid.Row="2" Grid.Column="0" />
+                <Label Text="Middag" Grid.Row="2" Grid.Column="1" VerticalOptions="Center" />
+            </Grid>
+
+            <Button
+                Text="Beräkna traktamente" />
+
+            <Border
+                x:Name="ResultBorder"
+                IsVisible="False"
+                Padding="10"
+            >
+                <VerticalStackLayout>
+                    <Label Text="Beräknat traktamente" FontAttributes="Bold" />
+                    <Label x:Name="AllowanceResultLabel" FontSize="18" Text="5,000kr" />
+                </VerticalStackLayout>
+            </Border>
+        </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>
