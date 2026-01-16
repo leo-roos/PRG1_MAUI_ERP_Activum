@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="PRG1_MAUI_ERP_Activum.View.SupportPage"
              Title="Hjälp &amp; Support"
-             BackgroundColor="White">
+             Style="{StaticResource Key=BasePageStyle}">
     <VerticalStackLayout>
         <Grid 
             RowDefinitions="auto, auto, auto, auto, auto, auto, auto, auto"

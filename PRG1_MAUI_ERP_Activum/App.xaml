@@ -8,6 +8,7 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Resources/Styles/Colors.xaml" />
                 <ResourceDictionary Source="Resources/Styles/Styles.xaml" />
+                <ResourceDictionary Source="Resources/Styles/CustomStyling.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
             <Color x:Key="NavBarColor">#134f5c</Color>
