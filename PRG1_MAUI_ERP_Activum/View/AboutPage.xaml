@@ -21,42 +21,37 @@
                 Text="Möt teamet bakom appen:"
                 Style="{StaticResource SubHeadline}" />
 
-            <Grid ColumnDefinitions="Auto, *" RowDefinitions="Auto" ColumnSpacing="10">
-                <Border 
+            <Grid ColumnDefinitions="Auto, *" RowDefinitions="Auto, Auto" ColumnSpacing="10" RowSpacing="5">
+                <Border
+                    Grid.Row="0"
                     Grid.Column="0"
-                    Stroke="LightGray"
-                    StrokeThickness="1"
-                    BackgroundColor="LightGray"
                     HeightRequest="60"
                     WidthRequest="60"
                     StrokeShape="50"
                     VerticalOptions="Center"
                 >
-                    <Label Text="L" HorizontalOptions="Center" VerticalOptions="Center" />
+                    <Label Text="L" FontSize="Large" VerticalOptions="Center" HorizontalOptions="Center" />
                 </Border>
 
-                <VerticalStackLayout Grid.Column="1" VerticalOptions="Center" Spacing="2">
-                    <Label Text="Leo – Frontend-utvecklare" />
+                <VerticalStackLayout Grid.Row="0" Grid.Column="1" VerticalOptions="Center" Spacing="2">
+                    <Label Text="Leo – Frontend-utvecklare" FontAttributes="Bold" />
                     <Label Text="Passionerad om användarvänlig design och smidiga appar." />
                 </VerticalStackLayout>
-            </Grid>
 
-            <Grid ColumnDefinitions="Auto, *" RowDefinitions="Auto" ColumnSpacing="10">
-                <Border 
-                     Grid.Column="0"
-                     Stroke="LightGray"
-                     StrokeThickness="1"
-                     BackgroundColor="LightGray"
-                     HeightRequest="60"
-                     WidthRequest="60"
-                     StrokeShape="50"
-                     VerticalOptions="Center"
+
+                <Border
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    HeightRequest="60"
+                    WidthRequest="60"
+                    StrokeShape="50"
+                    VerticalOptions="Center"
                 >
-                    <Label Text="L" HorizontalOptions="Center" VerticalOptions="Center" />
+                    <Label Text="L" FontSize="Large" HorizontalOptions="Center" VerticalOptions="Center" />
                 </Border>
 
-                <VerticalStackLayout Grid.Column="1" VerticalOptions="Center" Spacing="2">
-                    <Label Text="Linus – Frontend-utvecklare" />
+                <VerticalStackLayout Grid.Row="1" Grid.Column="1" VerticalOptions="Center" Spacing="2">
+                    <Label Text="Linus – Frontend-utvecklare" FontAttributes="Bold" />
                     <Label Text="Passionerad om användarvänlig design och smidiga appar." />
                 </VerticalStackLayout>
             </Grid>
@@ -66,7 +61,6 @@
                 Style="{StaticResource SubHeadline}" />
             <Label
                 Text="Har du frågor eller feedback? Hör av dig via activum@macrosoft.com" />
-
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>
