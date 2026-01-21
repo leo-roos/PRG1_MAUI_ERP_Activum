@@ -36,7 +36,7 @@
             </Grid>
 
             <Button
-                Text="Beräkna traktamente" />
+                Text="Beräkna traktamente" Clicked="CalculatePerDiem"/>
 
             <Border
                 x:Name="ResultBorder"
