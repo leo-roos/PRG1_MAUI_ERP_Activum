@@ -14,31 +14,25 @@
                 SemanticProperties.HeadingLevel="Level1"
                 VerticalOptions="Center" 
                 HorizontalOptions="Center" />
+            <Label Text="Vänligen skriv in antalet heldagar och halvdagar som du har varit bortrest. Skriv också in dina utgifter"
+                   VerticalOptions="Center"
+                   HorizontalOptions="Center" Margin="0, 0, 0, 25"/>
 
-            <Label Text="Reseperiod" FontAttributes="Bold" />
-            <HorizontalStackLayout Spacing="10">
-                <DatePicker x:Name="FromDatePicker" Date="{x:Static sys:DateTime.Today}" />
-                <Label Text="-" VerticalOptions="Center" FontSize="Medium" />
-                <DatePicker x:Name="ToDatePicker" Date="{x:Static sys:DateTime.Today}" />
-            </HorizontalStackLayout>
 
-            <Label Text="Typ av resa" FontAttributes="Bold" />
-            <Picker x:Name="TripTypePicker"
-                    Title="Välj typ av resa" />
-
-            <Picker x:Name="CountryPicker"
-                    Title="Välj land" />
-
-            <Label Text="Måltider" FontAttributes="Bold" />
-            <Grid ColumnDefinitions="Auto, *" RowDefinitions="35, 35, 35">
-                <CheckBox x:Name="BreakfastCheck" Grid.Row="0" Grid.Column="0" />
-                <Label Text="Frukost" Grid.Row="0" Grid.Column="1" VerticalOptions="Center" />
+            <Grid RowDefinitions="auto, auto, auto, auto" ColumnDefinitions="auto, auto" RowSpacing="10" Margin="0, 0, 0, 25">
                 
-                <CheckBox x:Name="LunchCheck" Grid.Row="1" Grid.Column="0" />
-                <Label Text="Lunch" Grid.Row="1" Grid.Column="1" VerticalOptions="Center" />
-                
-                <CheckBox x:Name="DinnerCheck" Grid.Row="2" Grid.Column="0" />
-                <Label Text="Middag" Grid.Row="2" Grid.Column="1" VerticalOptions="Center" />
+                <Label Text="Antal Heldagar" FontAttributes="Bold"/>
+                <Entry x:Name="WholeDays" Placeholder="1" Grid.Row="1" Grid.Column="0"/>
+
+                <Label Text="Antal Halvdagar" FontAttributes="Bold" Grid.Row="2"/>
+                <Entry x:Name="HalfDays" Placeholder="0" Grid.Row="3" Grid.Column="0"/>
+            </Grid>
+
+            
+
+            <Label Text="Eventuella Kostnader" FontAttributes="Bold" />
+            <Grid ColumnDefinitions="110" RowDefinitions="auto, auto" Margin="0, 0, 0, 25">
+                <Entry x:Name="ExtraExpenses" Placeholder="300"/>
             </Grid>
 
             <Button
