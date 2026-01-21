@@ -5,7 +5,7 @@
              Title="Lön &amp; Bonus"
              Style="{StaticResource Key=BasePageStyle}">
     <ScrollView>
-        <VerticalStackLayout Spacing="10">
+        <VerticalStackLayout>
             <Label
                 Padding="20"
                 Text="Lön &amp; Bonus"
@@ -46,7 +46,6 @@
             <VerticalStackLayout
                 Padding="20"
                 Spacing="10"
-                Margin="0, 25, 0, 0"
             >
                 <Label HorizontalOptions="Center" Style="{StaticResource SubHeadline}" Text="Beräkna Semesterlön" />
                 <Label
