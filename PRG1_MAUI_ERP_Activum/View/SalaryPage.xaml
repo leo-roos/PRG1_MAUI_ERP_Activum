@@ -46,7 +46,7 @@
                 >
                     <VerticalStackLayout>
                         <Label Text="Beräknad Månadslön" FontAttributes="Bold" />
-                        <Label x:Name="ExpectedSalaryResult" FontSize="18" Text="35,000kr" />
+                        <Label x:Name="ExpectedSalaryResult" FontSize="18" Text="23,800kr (35,000kr brutto)" />
                     </VerticalStackLayout>
                 </Border>
 
@@ -65,8 +65,14 @@
                     Text="För att beräkna din semesterlön så behöver du ange din genomsmittliga försäljning från dem senaste 11 månaders arbete."
                 />
 
+                <Label Text="Grundlön" />
+                <Entry Text="26,000 kr" Style="{StaticResource Key=ReadOnlyEntryStyle}" />
+
                 <Label Text="Genomsnittlig försäljning (11 månader)" />
                 <Entry x:Name="MyAverageSalesEntry" Text="" Placeholder="35000" Keyboard="Numeric" />
+
+                <Label Text="Löne skatt" />
+                <Entry Text="32%" IsReadOnly="True" Style="{StaticResource Key=ReadOnlyEntryStyle}" />
 
                 <Border
                     x:Name="ExpectedSemesterSalaryBorder"
@@ -75,7 +81,7 @@
                 >
                     <VerticalStackLayout>
                         <Label Text="Beräknad Semsterlön" FontAttributes="Bold" />
-                        <Label x:Name="ExpectedSemesterSalaryResult" FontSize="18" Text="35,000kr" />
+                        <Label x:Name="ExpectedSemesterSalaryResult" FontSize="18" Text="23,800kr (35,000kr brutto)" />
                     </VerticalStackLayout>
                 </Border>
 

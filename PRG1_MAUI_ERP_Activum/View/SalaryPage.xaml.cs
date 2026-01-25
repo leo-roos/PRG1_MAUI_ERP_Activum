@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using System.Globalization;
 using PRG1_MAUI_ERP_Activum.Model;
 
@@ -21,10 +22,22 @@ public partial class SalaryPage : ContentPage
         salaryTax = mySalary.SalaryTax;
     }
 
-    private int GetCalculatedSalary(int mySales)
+    private int GetCalculatedSalary(int mySales, bool withTax = true, bool withRate = true)
     {
-        double mySalesProvision = mySales * (provisionRate / 100.0);
+        double mySalesProvision = mySales;
+
+        if (withRate)
+        {
+            mySalesProvision = mySalesProvision * (provisionRate / 100.0);
+        }
+
         double totalSalary = baseSalary + mySalesProvision;
+
+        if (!withTax)
+        {
+            return (int)totalSalary;
+        }
+
         double taxedSalary = totalSalary - (totalSalary * (salaryTax / 100.0));
 
         return (int)taxedSalary;
@@ -53,7 +66,11 @@ public partial class SalaryPage : ContentPage
         }
 
         int CalculatedSalary = GetCalculatedSalary(mySales);
-        ExpectedSalaryResult.Text = CalculatedSalary.ToString("N0", new CultureInfo("en-US")) + " kr";
+        int CalculatedSalaryWithoutTax = GetCalculatedSalary(mySales, false, false);
+
+        string FormattedCalculatedSalary = CalculatedSalary.ToString("N0", new CultureInfo("en-US"));
+        string FormattedCalculatedSalaryWithoutTax = CalculatedSalaryWithoutTax.ToString("N0", new CultureInfo("en-US"));
+        ExpectedSalaryResult.Text = $"{FormattedCalculatedSalary} kr ({FormattedCalculatedSalaryWithoutTax}kr brutto)";
         ExpectedSalaryBorder.IsVisible = true;
     }
 
@@ -64,7 +81,7 @@ public partial class SalaryPage : ContentPage
         if (string.IsNullOrEmpty(MyAverageSalesEntry.Text))
         {
             MyAverageSalesEntry.Focus();
-            DisplayAlertAsync("Error", "För att beräkna din Månadslön måste du ange din totala försäljning denna månad!", "Ok");
+            DisplayAlertAsync("Error", "För att beräkna din Semesterlön måste du ange din totala försäljning de senaste 11 månaderna", "Ok");
             return;
         }
 
@@ -80,7 +97,11 @@ public partial class SalaryPage : ContentPage
         }
 
         int CalculatedSalary = GetCalculatedSalary(myAverageSales);
-        ExpectedSemesterSalaryResult.Text = CalculatedSalary.ToString("N0", new CultureInfo("en-US")) + " kr";
+        int CalculatedSalaryWithoutTax = GetCalculatedSalary(myAverageSales, false, false);
+
+        string FormattedCalculatedSalary = CalculatedSalary.ToString("N0", new CultureInfo("en-US"));
+        string FormattedCalculatedSalaryWithoutTax = CalculatedSalaryWithoutTax.ToString("N0", new CultureInfo("en-US"));
+        ExpectedSemesterSalaryResult.Text = $"{FormattedCalculatedSalary} kr ({FormattedCalculatedSalaryWithoutTax}kr brutto)";
         ExpectedSemesterSalaryBorder.IsVisible = true;
     }
 }
