@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:sys="clr-namespace:System;assembly=netstandard"
+             x:Class="PRG1_MAUI_ERP_Activum.View.LoginPage"
+             Title="Login"
+             Style="{StaticResource Key=BasePageStyle}">
+
+    <ScrollView>
+        <Grid 
+            Padding="20"
+            RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto"
+            ColumnDefinitions="*"
+            RowSpacing="10"
+        >
+            <Image
+                Grid.Row="0"
+                Source="{AppThemeBinding Light='logga_activum_svart.png', Dark='logga_activum_vit.png'}"
+                WidthRequest="200"
+                HeightRequest="100"
+            />
+
+            <Label Grid.Row="1" Text="Logga in" Style="{StaticResource SubHeadline}" />
+
+            <Label Grid.Row="2" Text="Användarnamn / E-Mail" />
+            <Entry x:Name="EmailEntry" Grid.Row="3" Text="" Placeholder="namn.efternamn@activium.se" Keyboard="Email" />
+
+            <Label Grid.Row="4" Text="Lösenord" />
+            <Entry x:Name="PasswordEntry" Grid.Row="5" Text="" Placeholder="lösenord" IsPassword="True" Keyboard="Password" />
+            <Label Grid.Row="6" Text="Glömt ditt lösenord och behöver hjälp? Kontakta oss via support@activium.se" />
+
+            <Button Grid.Row="7" Text="Logga In" Clicked="Login_Clicked" />
+        </Grid>
+    </ScrollView>
+
+</ContentPage>
