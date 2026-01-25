@@ -5,9 +5,15 @@
              Title="Lön &amp; Bonus"
              Style="{StaticResource Key=BasePageStyle}">
     <ScrollView>
-        <VerticalStackLayout>
+        <Grid
+            ColumnDefinitions="*"
+            RowDefinitions="Auto, Auto, 2, Auto"
+            RowSpacing="30"
+            Padding="20"
+            HorizontalOptions="Center"
+        >
             <Label
-                Padding="20"
+                Grid.Row="0"
                 Text="Lön &amp; Bonus"
                 Style="{StaticResource Headline}"
                 SemanticProperties.HeadingLevel="Level1"
@@ -15,57 +21,67 @@
                 HorizontalOptions="Center" />
 
             <VerticalStackLayout
-                Padding="20"
+                Grid.Row="1"
                 Spacing="10"
             >
                 <Label HorizontalOptions="Center" Style="{StaticResource SubHeadline}" Text="Beräkna Månadslön" />
                 <Label
-                       Margin="0, 0, 0, 10" 
-                       Text="Skriv in hur mycket försäljning du har gjort denna månad, du kommer få 12% provision av din försäljning för denna månad + din grundlön."
-                    />
+                    Margin="0, 0, 0, 10"
+                    Text="Skriv in hur mycket försäljning du har gjort denna månad, du kommer få 12% provision av din försäljning för denna månad + din grundlön."
+                />
 
                 <Label Text="Grundlön" />
-                <Entry Text="26,000 kr" IsReadOnly="True" />
+                <Entry Text="26,000 kr" Style="{StaticResource Key=ReadOnlyEntryStyle}" />
 
                 <Label Text="Din försäljning denna månad" />
-                <Entry Text="" Placeholder="15000" />
+                <Entry x:Name="MySalesEntry" Text="" Placeholder="15000" />
 
                 <Label Text="Löne skatt" />
-                <Entry Text="32%" IsReadOnly="True" />
+                <Entry Text="32%" IsReadOnly="True" Style="{StaticResource Key=ReadOnlyEntryStyle}" />
 
-                <Label
-                       x:Name="ExpectedSalaryResult"
-                       IsVisible="False"
-                       Margin="0, 10, 0, 10"
-                       Text="Din Löneberäkning: 30,000kr"
-                    />
+                <Border
+                    x:Name="ExpectedSalaryBorder"
+                    IsVisible="False"
+                    Padding="10"
+                >
+                    <VerticalStackLayout>
+                        <Label Text="Beräknad Månadslön" FontAttributes="Bold" />
+                        <Label x:Name="ExpectedSalaryResult" FontSize="18" Text="35,000kr" />
+                    </VerticalStackLayout>
+                </Border>
 
-                <Button Text="Beräkna Månadslön" />
+                <Button Text="Beräkna Månadslön" Clicked="CalculateSalary_Clicked" />
             </VerticalStackLayout>
 
+            <Border Grid.Row="2"></Border>
+
             <VerticalStackLayout
-                Padding="20"
+                Grid.Row="3"
                 Spacing="10"
             >
                 <Label HorizontalOptions="Center" Style="{StaticResource SubHeadline}" Text="Beräkna Semesterlön" />
                 <Label
-                       Margin="0, 0, 0, 10" 
-                       Text="För att beräkna din semesterlön så behöver du ange din genomsmitt lön från dem senaste 11 månaders arbete."
-                    />
+                    Margin="0, 0, 0, 10"
+                    Text="För att beräkna din semesterlön så behöver du ange din genomsmittliga försäljning från dem senaste 11 månaders arbete."
+                />
 
-                <Label Text="Genomsnitt lön (11 månader)" />
-                <Entry Placeholder="35000" />
+                <Label Text="Genomsnittlig försäljning (11 månader)" />
+                <Entry x:Name="MyAverageSalesEntry" Text="" Placeholder="35000" Keyboard="Numeric" />
 
-                <Label
-                       x:Name="ExpectedSummerSalaryResult"
-                       IsVisible="False"
-                       Margin="0, 10, 0, 10"
-                       Text="Din Löneberäkning: 30,000kr"
-                    />
+                <Border
+                    x:Name="ExpectedSemesterSalaryBorder"
+                    IsVisible="False"
+                    Padding="10"
+                >
+                    <VerticalStackLayout>
+                        <Label Text="Beräknad Semsterlön" FontAttributes="Bold" />
+                        <Label x:Name="ExpectedSemesterSalaryResult" FontSize="18" Text="35,000kr" />
+                    </VerticalStackLayout>
+                </Border>
 
-                <Button Text="Beräkna Semesterlön" />
+                <Button Text="Beräkna Semesterlön" Clicked="CalculateSemesterSalary_Clicked" />
 
             </VerticalStackLayout>
-        </VerticalStackLayout>
+        </Grid>
     </ScrollView>
 </ContentPage>
