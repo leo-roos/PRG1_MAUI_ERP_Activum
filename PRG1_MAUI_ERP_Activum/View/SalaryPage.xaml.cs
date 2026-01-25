@@ -1,17 +1,25 @@
 using System.Globalization;
+using PRG1_MAUI_ERP_Activum.Model;
+
 
 namespace PRG1_MAUI_ERP_Activum.View;
 
 public partial class SalaryPage : ContentPage
 {
-	public SalaryPage()
-	{
-		InitializeComponent();
-    }
+    private Salary mySalary;
+    private int baseSalary;
+    private int provisionRate;
+    private int salaryTax;
 
-    readonly int baseSalary = 26000;
-    readonly int provisionRate = 12;
-    readonly int salaryTax = 32;
+    public SalaryPage()
+    {
+        InitializeComponent();
+
+        mySalary = new Salary();
+        baseSalary = mySalary.BaseSalary;
+        provisionRate = mySalary.ProvisionRate;
+        salaryTax = mySalary.SalaryTax;
+    }
 
     private int GetCalculatedSalary(int mySales)
     {
