@@ -32,8 +32,8 @@
 
         <!-- Rad 1 -->
         <Button Grid.Row="2" Grid.Column="0" Text="C" Clicked="ClearButton" />
-        <Button Grid.Row="2" Grid.Column="1" Text="M+" Clicked="StoreInMemoryButton" />
-        <Button Grid.Row="2" Grid.Column="2" Text="M-" Clicked="CatchFromMemoryButton" />
+        <Button Grid.Row="2" Grid.Column="1" Text="%" Clicked="OperatorButton" />
+        <Button Grid.Row="2" Grid.Column="2" Text="^" Clicked="OperatorButton" />
         <Button Grid.Row="2" Grid.Column="3" Text="/" Clicked="OperatorButton" />
 
         <!-- Rad 2 -->
