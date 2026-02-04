@@ -15,10 +15,9 @@
            Grid.ColumnSpan="4"
            IsReadOnly="True"
            FontSize="24"
-           HorizontalOptions="FillAndExpand"
+           
            VerticalOptions="Center"
-           BackgroundColor="White"
-           TextColor="Black"
+
            HorizontalTextAlignment="End"/>
 
         <!-- Display för resultat -->
@@ -27,10 +26,8 @@
            Grid.ColumnSpan="4"
            IsReadOnly="True"
            FontSize="32"
-           HorizontalOptions="FillAndExpand"
            VerticalOptions="Center"
-           BackgroundColor="White"
-           TextColor="Black"
+
            HorizontalTextAlignment="End"/>
 
         <!-- Rad 1 -->
