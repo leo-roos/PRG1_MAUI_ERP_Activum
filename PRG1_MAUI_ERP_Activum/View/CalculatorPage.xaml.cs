@@ -117,6 +117,12 @@ public partial class CalculatorPage : ContentPage
                 }
                 accumulator /= operandValue;
                 break;
+            case "%":
+                accumulator %= operand;
+                break;
+            case "^":
+                accumulator = Math.Pow(accumulator, operand);
+                break;
         }
 
         operand = "";
@@ -135,16 +141,6 @@ public partial class CalculatorPage : ContentPage
 
         EntryCalculations.Text = "";
         EntryResult.Text = "0";
-    }
-
-    private void StoreInMemoryButton(object sender, EventArgs e)
-    {
-        EntryCalculations.Text = "Kommande funktion";
-    }
-
-    private void CatchFromMemoryButton(object sender, EventArgs e)
-    {
-        EntryCalculations.Text = "Kommande funktion";
     }
 
 }
