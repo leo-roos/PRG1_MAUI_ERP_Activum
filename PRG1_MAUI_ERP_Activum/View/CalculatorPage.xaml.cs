@@ -10,19 +10,20 @@ public partial class CalculatorPage : ContentPage
 	}
 
     private double accumulator = 0;
-    private double operand = 0;
+    private string operand = "";
     private string operation = "";
     private bool addComma = false;
+    private bool canAddComma = true;
 
     // hantering för numeriska knappar
     private void NumberButton(object sender, EventArgs e)
     {
         Button button = (Button)sender;
 
-        if (button.Text == "." && addComma == false)
+        if (button.Text == "." && addComma == false && canAddComma == true)
         {
             string accumulatorStr = accumulator.ToString();
-            if (!accumulatorStr.Contains("."))
+            if (!accumulatorStr.Contains(","))
             {
                 addComma = true;
                 EntryCalculations.Text += ",";
@@ -31,14 +32,27 @@ public partial class CalculatorPage : ContentPage
         }
 
         // Bygg upp operand baserat på knapptexten (t.ex. "1", "2")
-        else if (button.Text != "." && addComma == true)
+        else if (button.Text != ".")
         {
-            operand = operand + (Convert.ToDouble(button.Text)/10);
-            addComma = false;
-        }
-        else if (button.Text != "." && addComma == false)
+            if (addComma)
+            {
+                if (button.Text == "0" && canAddComma)
+                {
+                    operand = $"{operand},0";
+                }
+                else if (button.Text != "0")
+                {
+                    operand = operand + (Convert.ToDouble(button.Text) / 10);
+                }
+                addComma = false;
+            }
+            else
+            {
+                operand = $"{operand}" + button.Text;
+            }
+        } else
         {
-            operand = double.Parse($"{operand}" + button.Text);
+            return;
         }
 
         Debug.WriteLine($"operand: {operand.ToString()}");
@@ -56,10 +70,10 @@ public partial class CalculatorPage : ContentPage
         }
         else
         {
-            accumulator = operand; // Spara första talet i accumulator
+            accumulator = double.Parse(operand); // Spara första talet i accumulator
         }
 
-        operand = 0;
+        operand = "";
 
         Button button = (Button)sender;
         operation = button.Text;
@@ -76,35 +90,36 @@ public partial class CalculatorPage : ContentPage
         EntryCalculations.Text = accumulator.ToString();
 
         operation = "";
-        operand = accumulator;
+        operand = accumulator.ToString();
     }
 
 
     private void Calculate()
     {
+        double operandValue = double.Parse(operand);
         switch (operation)
         {
             case "+":
-                accumulator += operand;
+                accumulator += operandValue;
                 break;
             case "-":
-                accumulator -= operand;
+                accumulator -= operandValue;
                 break;
             case "*":
-                accumulator *= operand;
+                accumulator *= operandValue;
                 break;
             case "/":
-                if (operand == 0) // Hantera division med noll
+                if (operandValue == 0) // Hantera division med noll
                 {
                     DisplayAlertAsync("Fel!", "Division med noll är ej tillåtet.", "OK");
                     Clear();
                     return;
                 }
-                accumulator /= operand;
+                accumulator /= operandValue;
                 break;
         }
 
-        operand = 0;
+        operand = "";
     }
 
     private void ClearButton(object sender, EventArgs e)
@@ -115,7 +130,7 @@ public partial class CalculatorPage : ContentPage
     private void Clear()
     {
         accumulator = 0;
-        operand = 0;
+        operand = "";
         operation = "";
 
         EntryCalculations.Text = "";
