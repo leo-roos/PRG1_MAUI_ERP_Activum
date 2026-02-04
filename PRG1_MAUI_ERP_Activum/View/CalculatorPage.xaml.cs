@@ -53,7 +53,7 @@ public partial class CalculatorPage : ContentPage
         EntryCalculations.Text = accumulator.ToString();
 
         operation = "";
-        operand = 0;
+        operand = accumulator;
     }
 
 
