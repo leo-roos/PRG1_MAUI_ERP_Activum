@@ -1,3 +1,5 @@
+using System.Diagnostics;
+
 namespace PRG1_MAUI_ERP_Activum.View;
 
 public partial class CalculatorPage : ContentPage
@@ -10,15 +12,36 @@ public partial class CalculatorPage : ContentPage
     private double accumulator = 0;
     private double operand = 0;
     private string operation = "";
+    private bool addComma = false;
 
     // hantering för numeriska knappar
     private void NumberButton(object sender, EventArgs e)
     {
         Button button = (Button)sender;
 
-        // Bygg upp operand baserat på knapptexten (t.ex. "1", "2")
-        operand = (operand * 10) + Convert.ToDouble(button.Text);
+        if (button.Text == "." && addComma == false)
+        {
+            string accumulatorStr = accumulator.ToString();
+            if (!accumulatorStr.Contains("."))
+            {
+                addComma = true;
+                EntryCalculations.Text += ",";
+                return;
+            }
+        }
 
+        // Bygg upp operand baserat på knapptexten (t.ex. "1", "2")
+        else if (button.Text != "." && addComma == true)
+        {
+            operand = operand + (Convert.ToDouble(button.Text)/10);
+            addComma = false;
+        }
+        else if (button.Text != "." && addComma == false)
+        {
+            operand = double.Parse($"{operand}" + button.Text);
+        }
+
+        Debug.WriteLine($"operand: {operand.ToString()}");
         EntryCalculations.Text += button.Text;
         EntryResult.Text = operand.ToString();
     }
