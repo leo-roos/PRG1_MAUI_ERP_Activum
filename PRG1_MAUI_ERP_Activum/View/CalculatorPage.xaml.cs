@@ -30,17 +30,100 @@ public partial class CalculatorPage : ContentPage
         base.OnNavigatedFrom(args);
     }
 
+    Dictionary<string, List<Dictionary<string, object>>> keyValuePairs = new()
+    {
+        ["numbers"] = new()
+        {
+            new() { ["key"] = '0' },
+            new() { ["key"] = '1' },
+            new() { ["key"] = '2' },
+            new() { ["key"] = '3' },
+            new() { ["key"] = '4' },
+            new() { ["key"] = '5' },
+            new() { ["key"] = '6' },
+            new() { ["key"] = '7' },
+            new() { ["key"] = '8' },
+            new() { ["key"] = '9' }
+        },
+
+        ["operators"] = new()
+        {
+            new() { ["modifier"] = KeyboardModifiers.None, ["key"] = '-', ["value"] = '-' },
+            new() { ["modifier"] = KeyboardModifiers.None, ["key"] = '+', ["value"] = '+' },
+            new() { ["modifier"] = KeyboardModifiers.Shift, ["key"] = '5', ["value"] = '%' },
+            new() { ["modifier"] = KeyboardModifiers.Shift, ["key"] = '7', ["value"] = '/' },
+            new() { ["modifier"] = KeyboardModifiers.Shift, ["key"] = char.Parse("'"), ["value"] = '*' },
+            new() { ["modifier"] = KeyboardModifiers.Shift, ["key"] = '¨', ["value"] = '^' },
+        }
+    };
+
+
     void OnKeyUp(object sender, KeyPressedEventArgs args)
     {
+        foreach (var entry in keyValuePairs["numbers"])
+        {
+            char key = (char)entry["key"];
 
+            KeyboardModifiers modifier = KeyboardModifiers.None;
+            if (entry.ContainsKey("modifier"))
+            {
+                modifier = (KeyboardModifiers)entry["modifier"];
+            }
+
+            if (args.KeyChar == key && args.Modifiers == modifier)
+            {
+                char value = key;
+                if (entry.ContainsKey("value"))
+                {
+                    value = (char)entry["value"];
+                }
+
+                AddNumber(value.ToString());
+                return;
+            }
+        }
+        foreach (var entry in keyValuePairs["operators"])
+        {
+            char key = (char)entry["key"];
+
+            KeyboardModifiers modifier = args.Modifiers;
+            if (entry.ContainsKey("modifier"))
+            {
+                modifier = (KeyboardModifiers)entry["modifier"];
+            }
+
+            if (args.KeyChar == key && args.Modifiers == modifier)
+            {
+                char value = key;
+                if (entry.TryGetValue("value", out object? value1))
+                {
+                    value = (char)value1;
+                }
+
+                AddOperator(value.ToString());
+                return;
+            }
+        }
+
+        if (args.Keys == KeyboardKeys.Return || args.Keys == KeyboardKeys.Enter || args.Keys == KeyboardKeys.NumPadEnter)
+        {
+            HandleEqauls();
+        } else if (args.Keys == KeyboardKeys.Comma)
+        {
+            AddDecimal();
+        } else if (args.Keys == KeyboardKeys.C)
+        {
+            Clear();
+        }
     }
+
 
     private double accumulator = 0;
     private string operand = "";
     private string operation = "";
     private bool addComma = false;
 
-    private void addNumber(string number)
+    void AddNumber(string number)
     {
         // Bygg upp operand baserat på knapptexten (t.ex. "1", "2")
         //else if (number != ".")
@@ -75,7 +158,7 @@ public partial class CalculatorPage : ContentPage
         EntryResult.Text = operand.ToString();
     }
 
-    private void addDecimal()
+    void AddDecimal()
     {
         if (addComma == false)
         {
@@ -84,20 +167,7 @@ public partial class CalculatorPage : ContentPage
         }
     }
 
-    // hantering för numeriska knappar
-    private void NumberButton(object sender, EventArgs e)
-    {
-        Button button = (Button)sender;
-        addNumber(button.Text);
-    }
-
-    private void CommaButton(object sender, EventArgs e)
-    {
-        addDecimal();
-    }
-
-    // hantering för operator-knappar (+, -, *, /)
-    private void OperatorButton(object sender, EventArgs e)
+    void AddOperator(string op)
     {
         if (operation != "") // Utför beräkning om en tidigare operation finns
         {
@@ -111,14 +181,12 @@ public partial class CalculatorPage : ContentPage
         addComma = false;
         operand = "";
 
-        Button button = (Button)sender;
-        operation = button.Text;
+        operation = op;
 
         EntryCalculations.Text += $" {operation} ";
     }
 
-
-    private void EqualButton(object sender, EventArgs e)
+    void HandleEqauls()
     {
         Calculate();
 
@@ -128,7 +196,6 @@ public partial class CalculatorPage : ContentPage
         operation = "";
         operand = accumulator.ToString();
     }
-
 
     private void Calculate()
     {
@@ -172,6 +239,30 @@ public partial class CalculatorPage : ContentPage
 
         EntryCalculations.Text = "";
         EntryResult.Text = "0";
+    }
+
+    // hantering för numeriska knappar
+    private void NumberButton(object sender, EventArgs e)
+    {
+        Button button = (Button)sender;
+        AddNumber(button.Text);
+    }
+
+    private void CommaButton(object sender, EventArgs e)
+    {
+        AddDecimal();
+    }
+
+    // hantering för operator-knappar (+, -, *, /)
+    private void OperatorButton(object sender, EventArgs e)
+    {
+        Button button = (Button)sender;
+        AddOperator(button.Text);
+    }
+
+    private void EqualButton(object sender, EventArgs e)
+    {
+        HandleEqauls();
     }
 
     private void ClearButton(object sender, EventArgs e)
