@@ -7,8 +7,8 @@
     <Grid RowDefinitions="Auto, *, *, *, *, *, *"
       ColumnDefinitions="*, *, *, *"
       Padding="20"
-      ColumnSpacing="2"
-      RowSpacing="2">
+      ColumnSpacing="5"
+      RowSpacing="5">
         <!-- Display för beräkningar -->
         <Entry x:Name="EntryCalculations"
            Grid.Row="0"

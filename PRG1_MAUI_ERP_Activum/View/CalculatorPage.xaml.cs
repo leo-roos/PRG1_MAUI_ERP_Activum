@@ -13,38 +13,48 @@ public partial class CalculatorPage : ContentPage
     private string operand = "";
     private string operation = "";
     private bool addComma = false;
-    private bool canAddComma = true;
 
     // hantering för numeriska knappar
     private void NumberButton(object sender, EventArgs e)
     {
         Button button = (Button)sender;
 
-        if (button.Text == "." && addComma == false && canAddComma == true)
+        //Debug.WriteLine($"{button.Text == "." && addComma == false && canAddComma == true}, {button.Text}, {addComma}, {canAddComma}");
+        //if (button.Text == "." && addComma == false)
+        //{
+        //    string accumulatorStr = accumulator.ToString();
+        //    if (!accumulatorStr.Contains(","))
+        //    {
+        //        addComma = true;
+        //        EntryCalculations.Text += ",";
+        //        return;
+        //    }
+        //}
+        if (button.Text == "." && addComma == false)
         {
-            string accumulatorStr = accumulator.ToString();
-            if (!accumulatorStr.Contains(","))
-            {
-                addComma = true;
-                EntryCalculations.Text += ",";
-                return;
-            }
+            EntryCalculations.Text += ',';
+            addComma = true;
+            return;
         }
 
         // Bygg upp operand baserat på knapptexten (t.ex. "1", "2")
-        else if (button.Text != ".")
+        //else if (button.Text != ".")
+        if (button.Text != ".")
         {
             if (addComma)
             {
-                if (button.Text == "0" && canAddComma)
+                if (button.Text == "0")
                 {
                     operand = $"{operand},0";
                 }
                 else if (button.Text != "0")
                 {
-                    operand = operand + (Convert.ToDouble(button.Text) / 10);
+                    if (!operand.Contains(','))
+                    {
+                        operand += ',';
+                    }
+                    operand = operand + button.Text;
                 }
-                addComma = false;
             }
             else
             {
@@ -73,6 +83,7 @@ public partial class CalculatorPage : ContentPage
             accumulator = double.Parse(operand); // Spara första talet i accumulator
         }
 
+        addComma = false;
         operand = "";
 
         Button button = (Button)sender;
@@ -118,10 +129,10 @@ public partial class CalculatorPage : ContentPage
                 accumulator /= operandValue;
                 break;
             case "%":
-                accumulator %= operand;
+                accumulator %= operandValue;
                 break;
             case "^":
-                accumulator = Math.Pow(accumulator, operand);
+                accumulator = Math.Pow(accumulator, operandValue);
                 break;
         }
 
