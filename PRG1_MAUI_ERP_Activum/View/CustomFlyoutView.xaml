@@ -222,6 +222,9 @@
                            FontSize="20"
                            TextColor="White"/>
                 </Grid>
+
+                <Label x:Name="LoggedInAsLabel" Text="Inloggad som: " />
+                <Button Text="Logga ut" Clicked="Logout_Clicked" />
             </VerticalStackLayout>
         </VerticalStackLayout>
     </ScrollView>

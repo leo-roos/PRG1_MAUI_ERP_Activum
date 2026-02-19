@@ -7,9 +7,11 @@
     Shell.NavBarIsVisible="False">
 
     <Shell.FlyoutContent>
-        <local:CustomFlyoutView />
+        <local:CustomFlyoutView x:Name="FlyoutView" />
     </Shell.FlyoutContent>
 
+    <ShellContent Route="LoginPage" ContentTemplate="{DataTemplate local:LoginPage}" />
+    
     <ShellContent Route="MainPage" ContentTemplate="{DataTemplate local:MainPage}" />
     <ShellContent Route="CustomersPage" ContentTemplate="{DataTemplate local:CustomersPage}" />
     <ShellContent Route="InsurancePage" ContentTemplate="{DataTemplate local:InsurancePage}" />
@@ -20,5 +22,4 @@
     <ShellContent Route="SalaryPage" ContentTemplate="{DataTemplate local:SalaryPage}" />
     <ShellContent Route="PerDiemPage" ContentTemplate="{DataTemplate local:PerDiemPage}" />
     <ShellContent Route="AboutPage" ContentTemplate="{DataTemplate local:AboutPage}" />
-    
 </Shell>

@@ -19,6 +19,20 @@ public partial class CustomFlyoutView : ContentView
         }
     }
 
+    public void UpdateUsername()
+    {
+        string LoggedInUser = Preferences.Get("LoggedInUser", "");
+        if (LoggedInUser != "")
+        {
+            LoggedInAsLabel.Text = $"Inloggad som: \"{LoggedInUser}\"";
+            LoggedInAsLabel.IsVisible = true;
+        }
+        else
+        {
+            LoggedInAsLabel.Text = "";
+            LoggedInAsLabel.IsVisible = false;
+        }
+    }
 
     public CustomFlyoutView()
     {
@@ -39,6 +53,23 @@ public partial class CustomFlyoutView : ContentView
         InitializeComponent();
 
         BindingContext = this;
+
+        UpdateUsername();
+    }
+
+    private async void Logout_Clicked(object sender, EventArgs e)
+    {
+        Preferences.Remove("IsLoggedIn");
+        Preferences.Remove("LoggedInUser");
+        UpdateUsername();
+
+        if (Shell.Current is AppShell shell)
+        {
+            shell.DisableFlyout();
+            shell.FlyoutIsPresented = false;
+        }
+
+        await Shell.Current.GoToAsync("//LoginPage");
     }
 }
 
