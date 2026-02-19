@@ -76,15 +76,16 @@ namespace PRG1_MAUI_ERP_Activum.View
             }
 
             await DisplayAlertAsync("Inloggad", $"Du är nu inloggad som \"{userNameValue}\"!", "Ok");
+            Preferences.Set("IsLoggedIn", true);
+            Preferences.Set("LoggedInUser", userNameValue);
+
             if (Shell.Current is AppShell shell)
             {
-                shell.IsLoggedIn = true;
-                shell.LoggedInUser = userNameValue;
-
                 shell.EnableFlyout();
-                await shell.GoToAsync($"//MainPage");
+                shell.UserLoggedIn();
             }
-            return;
+
+            await Shell.Current.GoToAsync("//MainPage");
         }
 
         private void Login_Clicked(object sender, EventArgs e)

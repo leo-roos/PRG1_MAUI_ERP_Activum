@@ -9,6 +9,16 @@ namespace PRG1_MAUI_ERP_Activum
             InitializeComponent();
         }
 
+        protected override async void OnStart()
+        {
+            bool isLoggedIn = Preferences.Get("IsLoggedIn", false);
+
+            if (isLoggedIn)
+                await Shell.Current.GoToAsync("//MainPage");
+            else
+                await Shell.Current.GoToAsync("//LoginPage");
+        }
+
         protected override Window CreateWindow(IActivationState? activationState)
         {
             const double width = 400;
