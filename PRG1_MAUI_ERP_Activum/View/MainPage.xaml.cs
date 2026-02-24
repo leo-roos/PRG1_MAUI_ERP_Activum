@@ -1,10 +1,15 @@
-﻿namespace PRG1_MAUI_ERP_Activum.View
+﻿using PRG1_MAUI_ERP_Activum.Model;
+using System.Linq;
+
+namespace PRG1_MAUI_ERP_Activum.View
+
 {
     public partial class MainPage : ContentPage
     {
         public MainPage()
         {
             InitializeComponent();
+            var list = Insurance.Where(i => CustomersPage.InsuranceID.Contains(i.Id));
         }
 
         private void OnSearchCompleted(object sender, EventArgs e)
