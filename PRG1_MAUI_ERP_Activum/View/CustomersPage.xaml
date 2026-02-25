@@ -22,18 +22,7 @@
                     VerticalOptions="Center" 
                     HorizontalOptions="Center" />
 
-                <Label 
-                    Grid.Row="1" Grid.Column="0"
-                    Padding="0"
-                    Text="Sök Kundnummer / Personnummer"
-                    FontAttributes="Bold" />
-
-                <Entry 
-                    Grid.Row="2" Grid.Column="0" />
-
-                <Button 
-                    Grid.Row="2" Grid.Column="1"
-                    Text="Sök" />
+                
             </Grid>
 
             <Grid
