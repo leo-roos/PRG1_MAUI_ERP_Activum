@@ -20,13 +20,6 @@
                 VerticalOptions="Center"
                 HorizontalOptions="Center"/>
 
-
-            <Entry
-                
-                Placeholder="Namn/Efternamn/Email"
-                VerticalOptions="Center"
-                />
-                
             </VerticalStackLayout>
             
             <Grid ColumnDefinitions="2*,2*,3*,2*" Padding="5">
@@ -44,7 +37,7 @@
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <Grid ColumnDefinitions="2*,2*,3*,2*" Padding="5">
-                        <Label Text="{Binding FirstName}" />
+                        <Label Text="{Binding FirstName}" Padding="5, 0, 0 ,0" />
                         <Label Text="{Binding LastName}" Grid.Column="1" />
                         <Label Text="{Binding Email}" Grid.Column="2" />
                         <Label Text="{Binding Phone}" Grid.Column="3" />
