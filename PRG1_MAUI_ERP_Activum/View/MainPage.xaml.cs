@@ -9,7 +9,6 @@ namespace PRG1_MAUI_ERP_Activum.View
         public MainPage()
         {
             InitializeComponent();
-            var list = Insurance.Where(i => CustomersPage.InsuranceID.Contains(i.Id));
         }
 
         private void OnSearchCompleted(object sender, EventArgs e)

@@ -11,5 +11,50 @@
             SemanticProperties.HeadingLevel="Level1"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
+        
+        <Grid ColumnDefinitions="2*,2*,3*,2*" Padding="5">
+            <Label Text="Förnamn" FontAttributes="Bold" />
+            <Label Text="Efternamn" Grid.Column="1" FontAttributes="Bold" />
+            <Label Text="Email" Grid.Column="2" FontAttributes="Bold" />
+            <Label Text="Telefon" Grid.Column="3" FontAttributes="Bold" />
+        </Grid>
+
+        <CollectionView
+            x:Name="CustomersCollection"
+            SelectionMode="Single"
+            SelectionChanged="Customers_SelectionChanged">
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid ColumnDefinitions="2*,2*,3*,2*" Padding="5">
+                        <Label Text="{Binding FirstName}" />
+                        <Label Text="{Binding LastName}" Grid.Column="1" />
+                        <Label Text="{Binding Email}" Grid.Column="2" />
+                        <Label Text="{Binding Phone}" Grid.Column="3" />
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+
+        </CollectionView>
+
+        <Label Text="Försäkringar för vald kund" FontAttributes="Bold" Margin="0,30,0,0"/>
+
+        <Grid ColumnDefinitions="2*,1*,1*" Padding="5" BackgroundColor="#EEEEEE">
+            <Label Text="Typ" Grid.Column="0" FontAttributes="Bold" />
+            <Label Text="Kostnad" Grid.Column="1" FontAttributes="Bold" />
+            <Label Text="Aktiv" Grid.Column="2" FontAttributes="Bold" />
+        </Grid>
+
+        <CollectionView x:Name="CustomerInsurances">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid ColumnDefinitions="2*,1*,1*" Padding="5">
+                        <Label Text="{Binding InsuranceType}" Grid.Column="0" />
+                        <Label Text="{Binding MonthlyCost}" Grid.Column="1" HorizontalTextAlignment="Start" />
+                        <Label Text="{Binding StartDate}" Grid.Column="2" HorizontalTextAlignment="Start" />
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
     </VerticalStackLayout>
 </ContentPage>

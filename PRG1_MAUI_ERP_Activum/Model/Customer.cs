@@ -16,7 +16,7 @@ namespace PRG1_MAUI_ERP_Activum.Model
         public Customer(string firstName, string lastName, string email, string phone)
         {
             FirstName = firstName;
-            LastName = lastname;
+            LastName = lastName;
             Email = email;
             Phone = phone;
         }
