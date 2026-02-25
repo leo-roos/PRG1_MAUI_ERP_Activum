@@ -20,6 +20,13 @@
                 VerticalOptions="Center"
                 HorizontalOptions="Center"/>
 
+                <Entry
+                x:Name="SearchCustomers"
+                Placeholder="Namn/Efternamn/Email"
+                VerticalOptions="Center"
+                TextChanged="SearchCustomers_TextChanged"
+                />
+
             </VerticalStackLayout>
             
             <Grid ColumnDefinitions="2*,2*,3*,2*" Padding="5">

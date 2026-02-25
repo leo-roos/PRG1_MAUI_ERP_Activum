@@ -1,3 +1,4 @@
+using System.Globalization;
 using PRG1_MAUI_ERP_Activum.Model;
 using PRG1_MAUI_ERP_Activum.Services;
 
@@ -24,5 +25,22 @@ public partial class CustomersPage : ContentPage
         }
 
         CustomerInsurances.ItemsSource = _service.GetInsurancesForCustomer(selected).ToList();
+    }
+
+    private void SearchCustomers_TextChanged(object sender, TextChangedEventArgs e)
+    {
+        string search = SearchCustomers.Text;
+        List<Guid> customersFound = new List<Guid>();
+        foreach (var customer in _service.Customers)
+        {
+            if (customer.FirstName.ToLower().Contains(search.ToLower()))
+            {
+                if (!customersFound.Contains(customer.Id))
+                {
+                    customersFound.Add(customer.Id);
+                }
+            }
+        }
+        CustomersCollection.ItemsSource = _service.Customers.Where(c => customersFound.Contains(c.Id)).ToList();
     }
 }
