@@ -4,69 +4,42 @@
              x:Class="PRG1_MAUI_ERP_Activum.View.InsurancePage"
              Title="Försäkringar"
              Style="{StaticResource Key=BasePageStyle}">
-    <VerticalStackLayout>
+    <VerticalStackLayout Padding="10">
         <Label
-            Padding="20"
+            Padding="10"
             Text="Försäkringar"
             Style="{StaticResource Headline}"
             SemanticProperties.HeadingLevel="Level1"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
 
-        <Grid
-            RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto"
-            ColumnDefinitions="75*, 25*"
-            RowSpacing="5"
-            ColumnSpacing="10"
-            Padding="50, 0"
-        >
-            <Label Grid.Row="0" Text="Försäkrings Typ" />
+        <Label Text="Försäkringar för vald kund" FontAttributes="Bold" Margin="0,30,0,10" />
 
-            <Label Grid.Row="0" Grid.Column="1" Text="Pris" HorizontalTextAlignment="End" />
+        <Grid RowDefinitions="*, Auto" RowSpacing="10" ColumnDefinitions="1*,1*,1*">
+            <Label Text="Typ" Grid.Column="0" FontAttributes="Bold" />
+            <Label Text="Kostnad" Grid.Column="1" FontAttributes="Bold" />
+            <Label Text="Aktiv" Grid.Column="2" FontAttributes="Bold" />
 
-            <Border Grid.Row="1" Grid.ColumnSpan="2"></Border>
-
-            <Label Grid.Row="2" Text="Hemförsäkring" />
-            <Label Grid.Row="2" Grid.Column="1" Text="250kr" HorizontalTextAlignment="End" />
-
-            <Label Grid.Row="3" Text="Hemförsäkring 2" />
-            <Label Grid.Row="3" Grid.Column="1" Text="250kr" HorizontalTextAlignment="End" />
-
-            <Label Grid.Row="4" Text="Hemförsäkring 3" />
-            <Label Grid.Row="4" Grid.Column="1" Text="250kr" HorizontalTextAlignment="End" />
-
-            <Label Grid.Row="5" Text="Hemförsäkring 4" />
-            <Label Grid.Row="5" Grid.Column="1" Text="250kr" HorizontalTextAlignment="End" />
+            <Border Grid.Row="1" Grid.ColumnSpan="3"></Border>
         </Grid>
 
-        <Label 
-            Style="{StaticResource SubHeadline}"
-            Text="Registrera ny försäkring" Margin="0, 25, 0, 0" />
-        <Grid
-            RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, Auto"
-            ColumnDefinitions="*, Auto"
-            RowSpacing="15"
-            ColumnSpacing="10"
-            Padding="25"
-        >
-            <Label Grid.Row="0" Text="Sök kundnummer / personnummer" />
+        <CollectionView x:Name="CustomerInsurances" SelectionMode="Single" SelectionChanged="CustomerInsurances_SelectionChanged">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid ColumnDefinitions="1*,1*,1*" Padding="5">
+                        <Label Text="{Binding Type}" Grid.Column="0" Padding="5, 0, 0, 0" />
+                        <Label Text="{Binding MonthlyCost, StringFormat='{0} kr / månad'}" Grid.Column="1" />
+                        <Label Text="{Binding StartDate}" Grid.Column="2" />
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <Grid RowDefinitions="Auto, Auto" RowSpacing="10" ColumnDefinitions="3*, 1*" Margin="0, 30, 0, 0">
+            <Label Grid.ColumnSpan="2" Style="{StaticResource Key=SubHeadline}" Text="Lägg till ny Försäkring" />
             
-            <Entry Grid.Row="1" Grid.ColumnSpan="1" Placeholder="Kundnummer / Personnummer" />
-            <Button Grid.Row="1" Grid.Column="1" Text="Sök" />
-
-            <Label Grid.Row="2" TextColor="LightGreen" Text="Kund Hittad - Maria Andersson" />
-
-            <Label Grid.Row="3" Text="Välj försäkring" />
-            <Picker Grid.Row="4" Grid.ColumnSpan="2" x:Name="InsurancePicker">
-                <Picker.Items>
-                    <x:String>Hemförsäkring - 250kr</x:String>
-                    <x:String>Hemförsäkring 2 - 250kr</x:String>
-                    <x:String>Hemförsäkring 3 - 250kr</x:String>
-                    <x:String>Hemförsäkring 4 - 250kr</x:String>
-                </Picker.Items>
-            </Picker>
-
-            <Button Grid.Row="5" Grid.ColumnSpan="2" Text="Registrera försäkring" />
+            <Picker x:Name="InsurancesPicker" Grid.Row="1" Grid.Column="0" />
+            <Button Grid.Row="1" Grid.Column="1" Text="Lägg Till" Clicked="Button_Clicked_1" />
         </Grid>
     </VerticalStackLayout>
 </ContentPage>
