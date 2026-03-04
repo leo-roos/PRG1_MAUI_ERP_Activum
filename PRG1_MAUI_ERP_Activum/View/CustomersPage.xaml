@@ -13,23 +13,19 @@
             SemanticProperties.HeadingLevel="Level1"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
-            <VerticalStackLayout Padding="20">
-                <Label
-                FontAttributes="Italic"
+            
+        <VerticalStackLayout Padding="20" Spacing="10" MaximumWidthRequest="400">
+            <Label
                 Text="Sök efter kunder"
-                VerticalOptions="Center"
-                HorizontalOptions="Center"/>
+                HorizontalOptions="Center" />
 
-                <Entry
+            <Entry
                 x:Name="SearchCustomers"
                 Placeholder="Namn/Efternamn/Email"
-                VerticalOptions="Center"
-                TextChanged="SearchCustomers_TextChanged"
-                />
-
+                TextChanged="SearchCustomers_TextChanged" />
             </VerticalStackLayout>
             
-            <Grid ColumnDefinitions="2*,2*,3*,2*" Padding="5">
+        <Grid ColumnDefinitions="2*,2*,3*,2*" Padding="5">
             <Label Text="Förnamn" FontAttributes="Bold" />
             <Label Text="Efternamn" Grid.Column="1" FontAttributes="Bold" />
             <Label Text="Email" Grid.Column="2" FontAttributes="Bold" />
