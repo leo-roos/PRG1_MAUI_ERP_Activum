@@ -1,4 +1,3 @@
-using System.Globalization;
 using PRG1_MAUI_ERP_Activum.Model;
 using PRG1_MAUI_ERP_Activum.Services;
 
@@ -13,6 +12,7 @@ public partial class CustomersPage : ContentPage
 		InitializeComponent();
 
         CustomersCollection.ItemsSource = _service.Customers;
+        ChosenCustomerLayout.IsVisible = false;
     }
 
     private void Customers_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -20,11 +20,15 @@ public partial class CustomersPage : ContentPage
         var selected = e.CurrentSelection.FirstOrDefault() as Customer;
         if (selected == null)
         {
+            _service.chosenCustomer = null;
             CustomerInsurances.ItemsSource = null;
+            ChosenCustomerLayout.IsVisible = false;
             return;
         }
 
+        _service.chosenCustomer = selected;
         CustomerInsurances.ItemsSource = _service.GetInsurancesForCustomer(selected).ToList();
+        ChosenCustomerLayout.IsVisible = true;
     }
 
     private void SearchCustomers_TextChanged(object sender, TextChangedEventArgs e)
@@ -42,5 +46,10 @@ public partial class CustomersPage : ContentPage
             }
         }
         CustomersCollection.ItemsSource = _service.Customers.Where(c => customersFound.Contains(c.Id)).ToList();
+    }
+
+    private async void ChangeInsurances_Clicked(object sender, EventArgs e)
+    {
+        await Shell.Current.GoToAsync($"//InsurancePage");
     }
 }

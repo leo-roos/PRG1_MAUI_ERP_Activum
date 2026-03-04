@@ -12,11 +12,13 @@ namespace PRG1_MAUI_ERP_Activum.Services
 
         public ObservableCollection<Customer> Customers { get; }
         public ObservableCollection<Insurance> Insurances { get; }
+        public Customer? chosenCustomer { get; set; }
 
         private RegisterService()
         {
             Customers = new ObservableCollection<Customer>();
             Insurances = new ObservableCollection<Insurance>();
+            chosenCustomer = null;
 
             TestData();
         }
