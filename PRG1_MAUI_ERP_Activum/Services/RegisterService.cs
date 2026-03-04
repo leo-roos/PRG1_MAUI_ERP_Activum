@@ -23,16 +23,16 @@ namespace PRG1_MAUI_ERP_Activum.Services
 
         private void TestData()
         {
-            var insurance1 = new Insurance("Bilförsäkring", 249);
-            var insurance2 = new Insurance("Hemförsäkring", 129);
-            var insurance3 = new Insurance("Reseförsäkring", 39);
+            Insurance insurance1 = new Insurance("Bilförsäkring", 249);
+            Insurance insurance2 = new Insurance("Hemförsäkring", 129);
+            Insurance insurance3 = new Insurance("Reseförsäkring", 39);
 
             Insurances.Add(insurance1);
             Insurances.Add(insurance2);
             Insurances.Add(insurance3);
 
-            var customer1 = new Customer("Pelle", "Svanslös", "pelle@kattstugan.se", "0707 77 00 77");
-            var customer2 = new Customer("Maja", "Gräddnos", "maja@katthotel.se", "0708 88 11 22");
+            Customer customer1 = new Customer("Pelle", "Svanslös", "pelle@kattstugan.se", "0707 77 00 77");
+            Customer customer2 = new Customer("Maja", "Gräddnos", "maja@katthotel.se", "0708 88 11 22");
 
             customer1.InsuranceId.Add(insurance1.Id);
             customer1.InsuranceId.Add(insurance2.Id);
