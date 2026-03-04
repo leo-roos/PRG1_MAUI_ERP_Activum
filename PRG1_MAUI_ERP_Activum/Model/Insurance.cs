@@ -18,5 +18,15 @@
             EndDate = DateTime.Now.AddYears(1);
             ÏsActive = true;
         }
+
+        public Insurance(Insurance insurance) // to copy an insurance when linking to a customer, so that the same insurance can be linked to multiple customers without sharing the same start and end date
+        {
+            Id = Guid.NewGuid();
+            Type = insurance.Type;
+            MonthlyCost = insurance.MonthlyCost;
+            StartDate = insurance.StartDate;
+            EndDate = insurance.EndDate;
+            ÏsActive = insurance.ÏsActive;
+        }
     }
 }
