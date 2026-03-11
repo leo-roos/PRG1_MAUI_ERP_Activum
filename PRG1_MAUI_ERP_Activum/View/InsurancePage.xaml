@@ -13,18 +13,18 @@
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
 
-        <Label Text="Försäkringar för vald kund" FontAttributes="Bold" Margin="0,30,0,10" />
+      
 
         <CollectionView
             x:Name="CustomerInsurances"
             SelectionChanged="CustomerInsurances_SelectionChanged"
             SelectionMode="Single">
             <CollectionView.Header>
-                <Grid RowDefinitions="*, Auto" RowSpacing="5" ColumnDefinitions="1*,1*,1*, 1*" Padding="5">
+                <Grid RowDefinitions="*, Auto" RowSpacing="5" ColumnDefinitions="2*,1*" Padding="5">
                     <Label Text="Typ" FontAttributes="Bold" Grid.Column="0" />
-                    <Label Text="Kostnad" FontAttributes="Bold" Grid.Column="1" />
-                    <Label Text="Startdatum" FontAttributes="Bold" Grid.Column="2" />
-                    <Label Text="Slutdatum" FontAttributes="Bold" Grid.Column="3" />
+                    <Label Text="Kostnad" FontAttributes="Bold" Grid.Column="1" HorizontalTextAlignment="End"/>
+                    
+                   
 
                     <Border Grid.Row="1" Grid.ColumnSpan="4"></Border>
                 </Grid>
@@ -32,11 +32,10 @@
 
             <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    <Grid ColumnDefinitions="1*,1*,1*, 1*" Padding="5">
+                    <Grid ColumnDefinitions="2*,1*" Padding="5">
                         <Label Text="{Binding Type}" Grid.Column="0" Padding="5, 0, 0, 0" />
-                        <Label Text="{Binding MonthlyCost, StringFormat='{0} kr / månad'}" Grid.Column="1" />
-                        <Label Text="{Binding StartDate, StringFormat='{0:yyyy-MM-dd}'}" Grid.Column="2" />
-                        <Label Text="{Binding EndDate, StringFormat='{0:yyyy-MM-dd}'}" Grid.Column="3" />
+                        <Label Text="{Binding MonthlyCost, StringFormat='{0} kr / månad'}" Grid.Column="1" HorizontalTextAlignment="End"/>
+                     
                     </Grid>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
@@ -45,20 +44,20 @@
         <Grid Margin="0, 30, 0 ,0"
               RowDefinitions="Auto, Auto, Auto" RowSpacing="10"
               ColumnDefinitions="Auto, *" ColumnSpacing="5">
-            <Label x:Name="SelectedInsuranceLabel" Text="Vald Försäkring:" Grid.ColumnSpan="2" />
 
-            <Label Grid.Row="1" Text="Ändra Start Datum:"  VerticalOptions="Center" />
-            <DatePicker x:Name="StartDatePicker" Grid.Row="1" Grid.Column="1" DateSelected="StartDatePicker_DateSelected" />
-
-            <Label Grid.Row="2" Text="Ändra Slut Datum:" VerticalOptions="Center" />
-            <DatePicker x:Name="EndDatePicker" Grid.Row="2" Grid.Column="1" DateSelected="EndDatePicker_DateSelected" />
+            
         </Grid>
 
-        <Grid RowDefinitions="Auto, Auto" RowSpacing="10" ColumnDefinitions="3*, 1*" Margin="0, 30, 0, 0">
-            <Label Grid.ColumnSpan="2" Style="{StaticResource Key=SubHeadline}" Text="Lägg till ny Försäkring" />
+        <Grid RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto" RowSpacing="10" ColumnDefinitions="1*, 5*" Margin="0, 0, 0, 0">
+            <Label Grid.ColumnSpan="2" Style="{StaticResource Key=SubHeadline}" Text="Skapa ny Försäkring" />
             
-            <Picker x:Name="InsurancesPicker" Grid.Row="1" Grid.Column="0" />
-            <Button Grid.Row="1" Grid.Column="1" Text="Lägg Till" Clicked="Button_Clicked_1" />
+            <Entry x:Name="TypeInsurancesEntry" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"/>
+            <Label Text="Typ" Grid.Row="1" Grid.Column="0" FontAttributes="Bold"/>
+            <Button Grid.Row="5" Grid.Column="0" Text="Lägg Till" Clicked="Button_Clicked_1" Grid.ColumnSpan="2"/>
+            <Entry x:Name="PriceInsurancesEntry" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2"/>
+            <Label Text="Kostnad" Grid.Row="3" Grid.Column="0" FontAttributes="Bold"/>
+
+
         </Grid>
     </VerticalStackLayout>
 </ContentPage>
