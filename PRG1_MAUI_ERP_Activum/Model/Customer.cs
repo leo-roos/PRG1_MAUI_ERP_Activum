@@ -3,12 +3,12 @@
     public class Customer
     {
         public Guid Id { get; set; } = Guid.NewGuid();
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string Email { get; set; }
-        public string Phone { get; set; }
-        public List<Note> Notes { get; set; } = new();
-        public List<Insurance> Insurances { get; set; } = new();
+        public string FirstName { get; set; } = "";
+        public string LastName { get; set; } = "";
+        public string Email { get; set; } = "";
+        public string Phone { get; set; } = "";
+        public List<Note> Notes { get; set; } = [];
+        public List<Insurance> Insurances { get; set; } = [];
 
         public Customer(string firstName, string lastName, string email, string phone)
         {
