@@ -53,7 +53,7 @@
             
             <Entry x:Name="TypeInsurancesEntry" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"/>
             <Label Text="Typ" Grid.Row="1" Grid.Column="0" FontAttributes="Bold"/>
-            <Button Grid.Row="5" Grid.Column="0" Text="Lägg Till" Clicked="Button_Clicked_1" Grid.ColumnSpan="2"/>
+            <Button Grid.Row="5" Grid.Column="0" Text="Lägg Till" Clicked="Button_Clicked" Grid.ColumnSpan="2"/>
             <Entry x:Name="PriceInsurancesEntry" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2"/>
             <Label Text="Kostnad" Grid.Row="3" Grid.Column="0" FontAttributes="Bold"/>
 
