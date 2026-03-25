@@ -109,6 +109,10 @@ public partial class CustomersPage : ContentPage
             {
                 customersFound.Add(customer.Id);
             }
+            else if(customer.Phone.Contains(search))
+            {
+                customersFound.Add(customer.Id);
+            }
         }
         CustomersCollection.ItemsSource = _service.Customers.Where(c => customersFound.Contains(c.Id));
     }
