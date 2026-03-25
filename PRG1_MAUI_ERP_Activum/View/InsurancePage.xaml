@@ -16,8 +16,8 @@
       
 
         <CollectionView
-            x:Name="CustomerInsurances"
-            SelectionChanged="CustomerInsurances_SelectionChanged"
+            x:Name="Insurances_CollectionView"
+            SelectionChanged="Insurances_CollectionView_SelectionChanged"
             SelectionMode="Single">
             <CollectionView.Header>
                 <Grid RowDefinitions="*, Auto" RowSpacing="5" ColumnDefinitions="2*,1*" Padding="5">
@@ -28,7 +28,10 @@
 
                     <Border Grid.Row="1" Grid.ColumnSpan="4"></Border>
                 </Grid>
+                
             </CollectionView.Header>
+
+           
 
             <CollectionView.ItemTemplate>
                 <DataTemplate>
@@ -40,6 +43,15 @@
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
+
+        <VerticalStackLayout x:Name="ChosenInsuranceLayout" Spacing="10" IsVisible="False">
+            <Label x:Name="ChosenInsuranceLabel" Text="Vald försäkring: " FontAttributes="Bold" Margin="0,30,0,10" />
+
+            <Label Text="Ändra Kostnad" />
+            <Entry x:Name="PriceEntry" Keyboard="Numeric" WidthRequest="100" HorizontalOptions="Start" />
+
+            <Button Text="Spara" Clicked="Save_ChangeOfPrice" />
+        </VerticalStackLayout>
 
         <Grid Margin="0, 30, 0 ,0"
               RowDefinitions="Auto, Auto, Auto" RowSpacing="10"

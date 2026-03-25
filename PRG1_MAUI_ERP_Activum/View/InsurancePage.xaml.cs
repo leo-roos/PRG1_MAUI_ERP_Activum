@@ -13,12 +13,13 @@ public partial class InsurancePage : ContentPage
 	{
 		InitializeComponent();
 
-        CustomerInsurances.ItemsSource = _service.Insurances;
+        Insurances_CollectionView.ItemsSource = _service.Insurances;
 
 
 
     }
 
+    //private void Change_Price()
     private void Button_Clicked(object sender, EventArgs e)
     {
         if(!string.IsNullOrWhiteSpace(TypeInsurancesEntry.Text) && !string.IsNullOrWhiteSpace(PriceInsurancesEntry.Text)) 
@@ -27,7 +28,7 @@ public partial class InsurancePage : ContentPage
             {
                 Insurance insurance = new Insurance(TypeInsurancesEntry.Text, priceinsurance);
                 _service.Insurances.Add(insurance);
-                CustomerInsurances.ItemsSource = _service.Insurances;
+                Insurances_CollectionView.ItemsSource = _service.Insurances;
             }
             else
             {
@@ -36,6 +37,38 @@ public partial class InsurancePage : ContentPage
        
         }
 
+
+    }
+
+    private void UpdateSelectedCustomerInsurance(Insurance? newInsurance)
+    {
+        if (newInsurance == null)
+        {
+            ChosenInsuranceLayout.IsVisible = false;
+            Insurances_CollectionView.SelectedItem = null;
+        }
+        else
+        {
+            ChosenInsuranceLayout.IsVisible = true;
+            ChosenInsuranceLabel.Text = $"Vald Försäkring: {newInsurance.Type}";
+
+            PriceEntry.Text = newInsurance.MonthlyCost.ToString();
+           
+        }
+
+        SelectedInsurance = newInsurance;
+
+    }
+
+    private void Insurances_CollectionView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+        var selectedinsurance = e.CurrentSelection.FirstOrDefault() as Insurance;
+
+        UpdateSelectedCustomerInsurance(selectedinsurance);
+    }
+
+    private void Save_ChangeOfPrice(object sender, EventArgs e)
+    {
 
     }
 }
