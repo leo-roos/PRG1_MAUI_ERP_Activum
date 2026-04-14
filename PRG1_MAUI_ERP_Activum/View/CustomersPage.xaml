@@ -51,56 +51,6 @@
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
-
-            <VerticalStackLayout x:Name="ChosenCustomerLayout" Spacing="10" IsVisible="False">
-                <Label Text="Försäkringar för vald kund" FontAttributes="Bold" Margin="0,30,0,10" />
-
-                <CollectionView
-                    x:Name="CustomerInsurances"
-                    SelectionChanged="CustomerInsurances_SelectionChanged"
-                    SelectionMode="Single">
-                    <CollectionView.Header>
-                        <Grid RowDefinitions="*, Auto" RowSpacing="5" ColumnDefinitions="1*,1*,1*,1*" Padding="10">
-                            <Label Text="Typ" FontAttributes="Bold" Grid.Column="0" />
-                            <Label Text="Kostnad" FontAttributes="Bold" Grid.Column="1" />
-                            <Label Text="Startdatum" FontAttributes="Bold" Grid.Column="2" />
-                            <Label Text="Slutdatum" FontAttributes="Bold" Grid.Column="3" />
-
-                            <Border Grid.Row="1" Grid.ColumnSpan="4"></Border>
-                        </Grid>
-                    </CollectionView.Header>
-
-                    <CollectionView.ItemTemplate>
-                        <DataTemplate>
-                            <Grid ColumnDefinitions="1*,1*,1*,1*" Padding="10">
-                                <Label Text="{Binding Type}" Grid.Column="0" Padding="5, 0, 0, 0" />
-                                <Label Text="{Binding MonthlyCost, StringFormat='{0} kr / månad'}" Grid.Column="1" />
-                                <Label Text="{Binding StartDate, StringFormat='{0:yyyy-MM-dd}'}" Grid.Column="2" />
-                                <Label Text="{Binding EndDate, StringFormat='{0:yyyy-MM-dd}'}" Grid.Column="3" />
-                            </Grid>
-                        </DataTemplate>
-                    </CollectionView.ItemTemplate>
-                </CollectionView>
-            </VerticalStackLayout>
-
-            <VerticalStackLayout x:Name="ChosenInsuranceLayout" Spacing="10" IsVisible="False">
-                <Label x:Name="ChosenInsuranceLabel" Text="Vald försäkring: " FontAttributes="Bold" Margin="0,30,0,10" />
-
-                <Label Text="Ändra Kostnad" />
-                <Entry x:Name="CostEntry" Keyboard="Numeric" WidthRequest="100" HorizontalOptions="Start" />
-
-                <Label Text="Ändra Start Datum:" />
-                <DatePicker
-                    x:Name="StartDatePicker"
-                    DateSelected="StartDatePicker_DateSelected" />
-
-                <Label Text="Ändra Slut Datum:" />
-                <DatePicker
-                    x:Name="EndDatePicker"
-                    DateSelected="EndDatePicker_DateSelected" />
-
-                <Button Text="Spara" Clicked="ChosenInsuranceSave_Clicked" />
-            </VerticalStackLayout>
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>
