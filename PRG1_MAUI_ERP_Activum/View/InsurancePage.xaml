@@ -5,7 +5,7 @@
              Title="Försäkringar"
              Style="{StaticResource Key=BasePageStyle}">
     <ScrollView>
-        <VerticalStackLayout Padding="10">
+        <VerticalStackLayout Padding="10" Spacing="10">
             <Label
                 Padding="10"
                 Text="Försäkringar"
@@ -37,15 +37,7 @@
                 </CollectionView.ItemTemplate>
             </CollectionView>
 
-            <Grid RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto" RowSpacing="10" ColumnDefinitions="1*, 5*" Margin="0, 0, 0, 0">
-                <Label Grid.ColumnSpan="2" Style="{StaticResource Key=SubHeadline}" Text="Skapa ny Försäkring" />
-
-                <Entry x:Name="TypeInsurancesEntry" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"/>
-                <Label Text="Typ" Grid.Row="1" Grid.Column="0" FontAttributes="Bold"/>
-                <Button Grid.Row="5" Grid.Column="0" Text="Lägg Till" Clicked="Button_Clicked" Grid.ColumnSpan="2"/>
-                <Entry x:Name="PriceInsurancesEntry" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2"/>
-                <Label Text="Kostnad" Grid.Row="3" Grid.Column="0" FontAttributes="Bold"/>
-            </Grid>
+            <Button Clicked="AddNewInsurance_Clicked" Text="Lägg till ny försäkring" />
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>

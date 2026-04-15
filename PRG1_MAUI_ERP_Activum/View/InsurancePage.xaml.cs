@@ -24,27 +24,15 @@ public partial class InsurancePage : ContentPage
         Insurances_CollectionView.SelectedItem = null;
     }
 
-    private void Button_Clicked(object sender, EventArgs e)
-    {
-        if(!string.IsNullOrWhiteSpace(TypeInsurancesEntry.Text) && !string.IsNullOrWhiteSpace(PriceInsurancesEntry.Text)) 
-        {
-            if(int.TryParse(PriceInsurancesEntry.Text, out int priceinsurance))
-            {
-                Insurance insurance = new Insurance(TypeInsurancesEntry.Text, priceinsurance);
-                _service.Insurances.Add(insurance);
-                Insurances_CollectionView.ItemsSource = _service.Insurances;
-            }
-            else
-            {
-                DisplayAlertAsync("Error", "Se till att skriva ett nummer i kostnadsfältet!", "Ok");
-            }
-        }
-    }
-
     private void Insurances_CollectionView_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
         var selectedinsurance = e.CurrentSelection.FirstOrDefault() as Insurance;
 
         selectedInsuranceService.UpdateSelectedInsurace(selectedinsurance);
+    }
+
+    private void AddNewInsurance_Clicked(object sender, EventArgs e)
+    {
+        Shell.Current.GoToAsync("//NewInsurancePage");
     }
 }

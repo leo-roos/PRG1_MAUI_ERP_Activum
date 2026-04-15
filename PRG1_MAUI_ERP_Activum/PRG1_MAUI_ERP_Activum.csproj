@@ -67,6 +67,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="View\NewInsurancePage.xaml.cs">
+	    <DependentUpon>NewInsurancePage.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="View\SelectedInsurancePage.xaml.cs">
 	    <DependentUpon>SelectedInsurancePage.xaml</DependentUpon>
 	  </Compile>
@@ -86,6 +89,9 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Resources\Styles\CustomStyling.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="View\NewInsurancePage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="View\SelectedInsurancePage.xaml">
