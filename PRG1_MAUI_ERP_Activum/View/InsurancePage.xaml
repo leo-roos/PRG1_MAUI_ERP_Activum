@@ -4,72 +4,48 @@
              x:Class="PRG1_MAUI_ERP_Activum.View.InsurancePage"
              Title="Försäkringar"
              Style="{StaticResource Key=BasePageStyle}">
-    <VerticalStackLayout Padding="10">
-        <Label
-            Padding="10"
-            Text="Försäkringar"
-            Style="{StaticResource Headline}"
-            SemanticProperties.HeadingLevel="Level1"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+    <ScrollView>
+        <VerticalStackLayout Padding="10">
+            <Label
+                Padding="10"
+                Text="Försäkringar"
+                Style="{StaticResource Headline}"
+                SemanticProperties.HeadingLevel="Level1"
+                VerticalOptions="Center" 
+                HorizontalOptions="Center" />
 
-      
+            <CollectionView
+                x:Name="Insurances_CollectionView"
+                SelectionMode="Single"
+                SelectionChanged="Insurances_CollectionView_SelectionChanged">
+                <CollectionView.Header>
+                    <Grid RowDefinitions="*, Auto" RowSpacing="10" ColumnDefinitions="2*,2*" Padding="5">
+                        <Label Text="Typ" FontAttributes="Bold" />
+                        <Label Text="Kostnad" Grid.Column="1" FontAttributes="Bold" />
 
-        <CollectionView
-            x:Name="Insurances_CollectionView"
-            SelectionChanged="Insurances_CollectionView_SelectionChanged"
-            SelectionMode="Single">
-            <CollectionView.Header>
-                <Grid RowDefinitions="*, Auto" RowSpacing="5" ColumnDefinitions="2*,1*" Padding="5">
-                    <Label Text="Typ" FontAttributes="Bold" Grid.Column="0" />
-                    <Label Text="Kostnad" FontAttributes="Bold" Grid.Column="1" HorizontalTextAlignment="End"/>
-                    
-                   
-
-                    <Border Grid.Row="1" Grid.ColumnSpan="4"></Border>
-                </Grid>
-                
-            </CollectionView.Header>
-
-           
-
-            <CollectionView.ItemTemplate>
-                <DataTemplate>
-                    <Grid ColumnDefinitions="2*,1*" Padding="5">
-                        <Label Text="{Binding Type}" Grid.Column="0" Padding="5, 0, 0, 0" />
-                        <Label Text="{Binding MonthlyCost, StringFormat='{0} kr / månad'}" Grid.Column="1" HorizontalTextAlignment="End"/>
-                     
+                        <Border Grid.Row="1" Grid.ColumnSpan="2"></Border>
                     </Grid>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
+                </CollectionView.Header>
 
-        <VerticalStackLayout x:Name="ChosenInsuranceLayout" Spacing="10" IsVisible="False">
-            <Label x:Name="ChosenInsuranceLabel" Text="Vald försäkring: " FontAttributes="Bold" Margin="0,30,0,10" />
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid ColumnDefinitions="2*,2*" Padding="10">
+                            <Label Text="{Binding Type}" Padding="5, 0, 0 ,0" />
+                            <Label Text="{Binding MonthlyCost, StringFormat='{0} kr / månad'}" Grid.Column="1" />
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
 
-            <Label Text="Ändra Kostnad" />
-            <Entry x:Name="PriceEntry" Keyboard="Numeric" WidthRequest="100" HorizontalOptions="Start" />
+            <Grid RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto" RowSpacing="10" ColumnDefinitions="1*, 5*" Margin="0, 0, 0, 0">
+                <Label Grid.ColumnSpan="2" Style="{StaticResource Key=SubHeadline}" Text="Skapa ny Försäkring" />
 
-            <Button Text="Spara" Clicked="Save_ChangeOfPrice" />
+                <Entry x:Name="TypeInsurancesEntry" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"/>
+                <Label Text="Typ" Grid.Row="1" Grid.Column="0" FontAttributes="Bold"/>
+                <Button Grid.Row="5" Grid.Column="0" Text="Lägg Till" Clicked="Button_Clicked" Grid.ColumnSpan="2"/>
+                <Entry x:Name="PriceInsurancesEntry" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2"/>
+                <Label Text="Kostnad" Grid.Row="3" Grid.Column="0" FontAttributes="Bold"/>
+            </Grid>
         </VerticalStackLayout>
-
-        <Grid Margin="0, 30, 0 ,0"
-              RowDefinitions="Auto, Auto, Auto" RowSpacing="10"
-              ColumnDefinitions="Auto, *" ColumnSpacing="5">
-
-            
-        </Grid>
-
-        <Grid RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto" RowSpacing="10" ColumnDefinitions="1*, 5*" Margin="0, 0, 0, 0">
-            <Label Grid.ColumnSpan="2" Style="{StaticResource Key=SubHeadline}" Text="Skapa ny Försäkring" />
-            
-            <Entry x:Name="TypeInsurancesEntry" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"/>
-            <Label Text="Typ" Grid.Row="1" Grid.Column="0" FontAttributes="Bold"/>
-            <Button Grid.Row="5" Grid.Column="0" Text="Lägg Till" Clicked="Button_Clicked" Grid.ColumnSpan="2"/>
-            <Entry x:Name="PriceInsurancesEntry" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2"/>
-            <Label Text="Kostnad" Grid.Row="3" Grid.Column="0" FontAttributes="Bold"/>
-
-
-        </Grid>
-    </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>

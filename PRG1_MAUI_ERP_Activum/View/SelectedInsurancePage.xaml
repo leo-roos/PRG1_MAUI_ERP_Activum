@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PRG1_MAUI_ERP_Activum.View.SelectedInsurancePage"
+             Title="Försäkringar"
+             Style="{StaticResource Key=BasePageStyle}">
+    <ScrollView>
+        <Grid RowDefinitions="Auto, Auto, Auto, Auto, Auto, *, Auto" Padding="10">
+            <Label
+                x:Name="Title"
+                Grid.Row="0"
+                Padding="10"
+                Text="Vald Försäkring"
+                Style="{StaticResource Headline}"
+                SemanticProperties.HeadingLevel="Level1"
+                VerticalOptions="Center" 
+                HorizontalOptions="Center" />
+
+            <Label Grid.Row="1" x:Name="ChosenInsuranceLabel" Text="Vald försäkring: " FontAttributes="Bold" Margin="0,30,0,10" />
+
+            <Label Grid.Row="2" Text="Ändra Kostnad" />
+            <Entry Grid.Row="3" x:Name="PriceEntry" Keyboard="Numeric" WidthRequest="100" HorizontalOptions="Start" />
+
+            <Button Grid.Row="4" Text="Spara" Clicked="Save_ChangeOfPrice" />
+
+            <Button Grid.Row="6" Clicked="GoBack_Clicked" Text="Gå Tillbaka" />
+        </Grid>
+    </ScrollView>
+</ContentPage>
