@@ -7,18 +7,17 @@
     <Grid RowDefinitions="Auto, *, *, *, *, *, *"
       ColumnDefinitions="*, *, *, *"
       Padding="20"
-      ColumnSpacing="2"
-      RowSpacing="2">
+      ColumnSpacing="5"
+      RowSpacing="5">
         <!-- Display för beräkningar -->
         <Entry x:Name="EntryCalculations"
            Grid.Row="0"
            Grid.ColumnSpan="4"
            IsReadOnly="True"
            FontSize="24"
-           HorizontalOptions="FillAndExpand"
+           
            VerticalOptions="Center"
-           BackgroundColor="White"
-           TextColor="Black"
+
            HorizontalTextAlignment="End"/>
 
         <!-- Display för resultat -->
@@ -27,16 +26,14 @@
            Grid.ColumnSpan="4"
            IsReadOnly="True"
            FontSize="32"
-           HorizontalOptions="FillAndExpand"
            VerticalOptions="Center"
-           BackgroundColor="White"
-           TextColor="Black"
+
            HorizontalTextAlignment="End"/>
 
         <!-- Rad 1 -->
         <Button Grid.Row="2" Grid.Column="0" Text="C" Clicked="ClearButton" />
-        <Button Grid.Row="2" Grid.Column="1" Text="M+" Clicked="StoreInMemoryButton" />
-        <Button Grid.Row="2" Grid.Column="2" Text="M-" Clicked="CatchFromMemoryButton" />
+        <Button Grid.Row="2" Grid.Column="1" Text="%" Clicked="OperatorButton" />
+        <Button Grid.Row="2" Grid.Column="2" Text="^" Clicked="OperatorButton" />
         <Button Grid.Row="2" Grid.Column="3" Text="/" Clicked="OperatorButton" />
 
         <!-- Rad 2 -->
@@ -59,7 +56,7 @@
 
         <!-- Rad 5 -->
         <Button Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" Text="0" Clicked="NumberButton" HorizontalOptions="FillAndExpand" />
-        <Button Grid.Row="6" Grid.Column="2" Text="." Clicked="NumberButton" />
+        <Button Grid.Row="6" Grid.Column="2" Text="." Clicked="CommaButton" />
         <Button Grid.Row="6" Grid.Column="3" Text="=" Clicked="EqualButton" />
     </Grid>
 </ContentPage>
