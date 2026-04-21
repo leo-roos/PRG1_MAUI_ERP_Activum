@@ -66,7 +66,7 @@ public partial class SelectedCustomerInsurancePage : ContentPage
             string newDate = EndDatePicker.Date.Value.ToString("yyyy-MM-dd");
             if (currentDate != newDate)
             {
-                selectedCustomerService.SelectedInsurance.StartDate = EndDatePicker.Date.Value;
+                selectedCustomerService.SelectedInsurance.EndDate = EndDatePicker.Date.Value;
                 isEndDateChanged = true;
             }
         }
@@ -91,6 +91,8 @@ public partial class SelectedCustomerInsurancePage : ContentPage
         }
 
         DisplayAlertAsync("Uppdatera Försäkringen", updateMessage, "Ok");
+
+        _service.UpdateInsurance(selectedCustomerService.SelectedInsurance);
     }
 
     private void GoBack_Clicked(object sender, EventArgs e)
