@@ -1,4 +1,6 @@
-﻿namespace PRG1_MAUI_ERP_Activum.Model
+﻿using System.Collections.ObjectModel;
+
+namespace PRG1_MAUI_ERP_Activum.Model
 {
     public class Customer
     {
@@ -7,8 +9,8 @@
         public string LastName { get; set; } = "";
         public string Email { get; set; } = "";
         public string Phone { get; set; } = "";
-        public List<Note> Notes { get; set; } = [];
-        public List<Insurance> Insurances { get; set; } = [];
+        public ObservableCollection<Note> Notes { get; set; } = [];
+        public ObservableCollection<Insurance> Insurances { get; set; } = [];
 
         public Customer(string firstName, string lastName, string email, string phone)
         {

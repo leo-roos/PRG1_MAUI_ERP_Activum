@@ -1,5 +1,4 @@
 ﻿using PRG1_MAUI_ERP_Activum.Model;
-using PRG1_MAUI_ERP_Activum.View;
 
 namespace PRG1_MAUI_ERP_Activum.Services
 {

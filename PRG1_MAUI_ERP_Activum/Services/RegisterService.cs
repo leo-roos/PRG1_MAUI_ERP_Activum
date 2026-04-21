@@ -66,8 +66,21 @@ namespace PRG1_MAUI_ERP_Activum.Services
             return Insurances.FirstOrDefault(i => i.Id == id);
         }
 
-        public List<Insurance> GetInsurancesForCustomer(Customer customer) {
-            return customer.Insurances;
+        public void UpdateInsurance(Insurance insurance)
+        {
+            Insurance? existingInsurance = GetInsurance(insurance.Id);
+            if (existingInsurance != null)
+            {
+                existingInsurance.Type = insurance.Type;
+                existingInsurance.MonthlyCost = insurance.MonthlyCost;
+                existingInsurance.StartDate = insurance.StartDate;
+                existingInsurance.EndDate = insurance.EndDate;
+                existingInsurance.IsActive = insurance.IsActive;
+            }
+        }
+
+        public ObservableCollection<Insurance> GetInsurancesForCustomer(Guid id) {
+            return Customers.FirstOrDefault(i => i.Id == id).Insurances;
         }
 
         public static void LinkInsurance(Customer customer, Insurance insurance)

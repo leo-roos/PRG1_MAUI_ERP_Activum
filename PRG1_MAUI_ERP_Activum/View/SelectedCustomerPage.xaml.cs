@@ -21,7 +21,8 @@ public partial class SelectedCustomerPage : ContentPage
         selectedCustomerService.UpdateSelectedInsurace(null);
         if (selectedCustomerService.SelectedCustomer != null)
         {
-            CustomerInsurances.ItemsSource = _service.GetInsurancesForCustomer(selectedCustomerService.SelectedCustomer);
+            CustomerInsurances.ItemsSource = null;
+            CustomerInsurances.ItemsSource = _service.GetInsurancesForCustomer(selectedCustomerService.SelectedCustomer.Id);
             CustomerInsurances.SelectedItem = null;
             Title.Text = $"{selectedCustomerService.SelectedCustomer.FirstName} {selectedCustomerService.SelectedCustomer.LastName}";
         }
