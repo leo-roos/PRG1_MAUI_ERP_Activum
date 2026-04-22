@@ -1,6 +1,5 @@
 using PRG1_MAUI_ERP_Activum.Model;
 using PRG1_MAUI_ERP_Activum.Services;
-using System.Diagnostics;
 
 namespace PRG1_MAUI_ERP_Activum.View;
 
@@ -33,6 +32,11 @@ public partial class SelectedCustomerPage : ContentPage
         var selected = e.CurrentSelection.FirstOrDefault() as Insurance;
 
         selectedCustomerService.UpdateSelectedInsurace(selected);
+    }
+
+    private void ViewNotes_Clicked(object sender, EventArgs e)
+    {
+        selectedCustomerService.ViewNotes();
     }
 
     private void GoBack_Clicked(object sender, EventArgs e)
