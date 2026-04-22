@@ -36,6 +36,15 @@ namespace PRG1_MAUI_ERP_Activum.Services
             Customer customer4 = new Customer("Lisa", "Kattälskare", "lisa@kattälskare.se", "0709 99 88 77");
             Customer customer5 = new Customer("Olle", "Kattvän", "olle@kattvän.se", "0706 66 55 44");
 
+            Note note1 = new Note("Kunden ringde och ville ändra adress.");
+            Note note2 = new Note("Kunden skickade ett e-postmeddelande.");
+            Note note3 = new Note("Kunden skickade ett meddelande via chat.");
+            note2.CreatedDate = DateTime.Now.AddDays(-1);
+            note2.EditDate = DateTime.Now.AddDays(+1);
+            customer1.Notes.Add(note1);
+            customer1.Notes.Add(note2);
+            customer1.Notes.Add(note3);
+
             customer1.Insurances.Add(new Insurance(insurance1));
             customer1.Insurances.Add(new Insurance(insurance2));
             customer1.Insurances.Add(new Insurance(insurance3));
@@ -81,6 +90,10 @@ namespace PRG1_MAUI_ERP_Activum.Services
 
         public ObservableCollection<Insurance> GetInsurancesForCustomer(Guid id) {
             return Customers.FirstOrDefault(i => i.Id == id).Insurances;
+        }
+
+        public ObservableCollection<Note> GetNotesForCustomer(Guid id) {
+            return new ObservableCollection<Note>(Customers.FirstOrDefault(i => i.Id == id).Notes.OrderByDescending(n => n.EditDate));
         }
 
         public static void LinkInsurance(Customer customer, Insurance insurance)

@@ -5,7 +5,7 @@
              Title="Vald Kund"
              Style="{StaticResource Key=BasePageStyle}">
     <ScrollView>
-        <Grid RowDefinitions="Auto, Auto, Auto, *, Auto" Padding="10">
+        <Grid RowDefinitions="Auto, Auto, Auto, Auto, *, Auto" Padding="10">
             <Label
                 x:Name="Title"
                 Grid.Row="0"
@@ -46,7 +46,9 @@
                 </CollectionView.ItemTemplate>
             </CollectionView>
 
-            <Button Clicked="GoBack_Clicked" Grid.Row="4" Text="Gå Tillbaka" />
+            <Button Clicked="ViewNotes_Clicked" Grid.Row="3" Text="Se Anteckningar" />
+
+            <Button Clicked="GoBack_Clicked" Grid.Row="5" Text="Gå Tillbaka" />
         </Grid>
     </ScrollView>
 </ContentPage>
