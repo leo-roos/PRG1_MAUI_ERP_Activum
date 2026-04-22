@@ -22,6 +22,8 @@ public partial class InsurancePage : ContentPage
 
         selectedInsuranceService.UpdateSelectedInsurace(null);
         Insurances_CollectionView.SelectedItem = null;
+        Insurances_CollectionView.ItemsSource = null;
+        Insurances_CollectionView.ItemsSource = _service.Insurances;
     }
 
     private void Insurances_CollectionView_SelectionChanged(object sender, SelectionChangedEventArgs e)
