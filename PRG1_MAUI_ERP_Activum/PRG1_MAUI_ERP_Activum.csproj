@@ -68,10 +68,18 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="ViewModel\" />
-	</ItemGroup>
-
-	<ItemGroup>
+	  <Compile Update="View\NewInsurancePage.xaml.cs">
+	    <DependentUpon>NewInsurancePage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="View\SelectedInsurancePage.xaml.cs">
+	    <DependentUpon>SelectedInsurancePage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="View\SelectedCustomerInsurancePage.xaml.cs">
+	    <DependentUpon>SelectedCustomerInsurancePage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="View\SelectedCustomerPage.xaml.cs">
+	    <DependentUpon>SelectedCustomerPage.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="View\LoginPage.xaml.cs">
 	    <DependentUpon>LoginPage.xaml</DependentUpon>
 	  </Compile>
@@ -82,6 +90,18 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Resources\Styles\CustomStyling.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="View\NewInsurancePage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="View\SelectedInsurancePage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="View\SelectedCustomerInsurancePage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="View\SelectedCustomerPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="View\CustomFlyoutView.xaml">

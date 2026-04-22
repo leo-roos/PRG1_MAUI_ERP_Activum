@@ -11,7 +11,13 @@
     </Shell.FlyoutContent>
 
     <ShellContent Route="LoginPage" ContentTemplate="{DataTemplate local:LoginPage}" />
-    
+
+    <ShellContent Route="SelectedCustomerPage" ContentTemplate="{DataTemplate local:SelectedCustomerPage}" />
+    <ShellContent Route="SelectedCustomerInsurancePage" ContentTemplate="{DataTemplate local:SelectedCustomerInsurancePage}" />
+
+    <ShellContent Route="SelectedInsurancePage" ContentTemplate="{DataTemplate local:SelectedInsurancePage}" />
+    <ShellContent Route="NewInsurancePage" ContentTemplate="{DataTemplate local:NewInsurancePage}" />
+
     <ShellContent Route="MainPage" ContentTemplate="{DataTemplate local:MainPage}" />
     <ShellContent Route="CustomersPage" ContentTemplate="{DataTemplate local:CustomersPage}" />
     <ShellContent Route="InsurancePage" ContentTemplate="{DataTemplate local:InsurancePage}" />

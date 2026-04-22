@@ -5,70 +5,52 @@
              Title="Kunder"
              Style="{StaticResource Key=BasePageStyle}">
     <ScrollView>
-        <VerticalStackLayout>
-            <Grid
-                Padding="20"
-                RowDefinitions="Auto, Auto, Auto, Auto, Auto"
-                ColumnDefinitions="*, Auto"
-                RowSpacing="5"
-                ColumnSpacing="10"
-            >
-                <Label 
-                    Grid.Row="0" Grid.ColumnSpan="2"
-                    Padding="20"
-                    Text="Kunder"
-                    Style="{StaticResource Headline}"
-                    SemanticProperties.HeadingLevel="Level1"
-                    VerticalOptions="Center" 
+        <VerticalStackLayout Padding="10">
+            <Label
+                Padding="10"
+                Text="Kunder"
+                Style="{StaticResource Headline}"
+                SemanticProperties.HeadingLevel="Level1"
+                VerticalOptions="Center" 
+                HorizontalOptions="Center" />
+
+            <VerticalStackLayout Padding="20" Spacing="10" MaximumWidthRequest="400">
+                <Label
+                    Text="Sök efter kunder"
                     HorizontalOptions="Center" />
 
-                <Label 
-                    Grid.Row="1" Grid.Column="0"
-                    Padding="0"
-                    Text="Sök Kundnummer / Personnummer"
-                    FontAttributes="Bold" />
+                <Entry
+                    x:Name="SearchCustomers"
+                    Placeholder="Namn/Efternamn/Email"
+                    TextChanged="SearchCustomers_TextChanged" />
+            </VerticalStackLayout>
 
-                <Entry 
-                    Grid.Row="2" Grid.Column="0" />
+            <CollectionView
+                x:Name="CustomersCollection"
+                SelectionMode="Single"
+                SelectionChanged="Customers_SelectionChanged">
+                <CollectionView.Header>
+                    <Grid RowDefinitions="*, Auto" RowSpacing="10" ColumnDefinitions="2*,2*,3*,2*" Padding="5">
+                        <Label Text="Förnamn" FontAttributes="Bold" />
+                        <Label Text="Efternamn" Grid.Column="1" FontAttributes="Bold" />
+                        <Label Text="Email" Grid.Column="2" FontAttributes="Bold" />
+                        <Label Text="Telefon" Grid.Column="3" FontAttributes="Bold" />
 
-                <Button 
-                    Grid.Row="2" Grid.Column="1"
-                    Text="Sök" />
-            </Grid>
+                        <Border Grid.Row="1" Grid.ColumnSpan="4"></Border>
+                    </Grid>
+                </CollectionView.Header>
 
-            <Grid
-                 Padding="20, 0, 20, 20"
-                 RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto"
-                 ColumnDefinitions="*, Auto"
-                 RowSpacing="10"
-             >
-                <Label 
-                    Grid.Row="0" Grid.ColumnSpan="2"
-                    FontAttributes="Bold"
-                    Text="Aktuell Kundinformation" />
-
-                <Label 
-                    x:Name="CustomerInformationLabel"
-                    Grid.Row="1" Grid.ColumnSpan="2"
-                    Text="Ingen sökning gjord ännu!"
-                    TextColor="DimGray" />
-
-                <Label 
-                    x:Name="CustomerName"
-                    Grid.Row="2" Grid.ColumnSpan="2" />
-
-                <Label 
-                    x:Name="InsuranceInfo"
-                    Grid.Row="3" Grid.ColumnSpan="2" />
-
-                <Label
-                    x:Name="AccountNumber"
-                    Grid.Row="4" Grid.ColumnSpan="2" />
-
-                <Label
-                    x:Name="WrittenNotes"
-                    Grid.Row="5" Grid.ColumnSpan="2" />
-            </Grid>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid ColumnDefinitions="2*,2*,3*,2*" Padding="10">
+                            <Label Text="{Binding FirstName}" Padding="5, 0, 0 ,0" />
+                            <Label Text="{Binding LastName}" Grid.Column="1" />
+                            <Label Text="{Binding Email}" Grid.Column="2" />
+                            <Label Text="{Binding Phone}" Grid.Column="3" />
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>

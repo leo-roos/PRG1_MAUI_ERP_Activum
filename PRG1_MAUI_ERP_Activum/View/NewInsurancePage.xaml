@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PRG1_MAUI_ERP_Activum.View.NewInsurancePage"
+             Title="Skapa Ny Försäkring"
+             Style="{StaticResource Key=BasePageStyle}">
+    <ScrollView>
+        <Grid RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, *, Auto" RowSpacing="10" ColumnDefinitions="1*, 5*" Margin="0, 0, 0, 0" Padding="10">
+            <Label
+                Grid.Row="0"
+                Grid.ColumnSpan="2"
+                Padding="10"
+                Text="Skapa Ny Försäkring"
+                Style="{StaticResource Headline}"
+                SemanticProperties.HeadingLevel="Level1"
+                VerticalOptions="Center" 
+                HorizontalOptions="Center" />
+
+            <Label Text="Typ" Grid.Row="1" Grid.Column="0" FontAttributes="Bold"/>
+            <Entry x:Name="TypeInsurancesEntry" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"/>
+            <Label Text="Kostnad" Grid.Row="3" Grid.Column="0" FontAttributes="Bold"/>
+            <Entry x:Name="PriceInsurancesEntry" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2"/>
+            <Button Grid.Row="5" Grid.Column="0" Text="Lägg Till" Clicked="Button_Clicked" Grid.ColumnSpan="2"/>
+
+            <Button Grid.Row="7" Grid.ColumnSpan="2" Clicked="GoBack_Clicked" Text="Gå Tillbaka" />
+        </Grid>
+    </ScrollView>
+</ContentPage>
