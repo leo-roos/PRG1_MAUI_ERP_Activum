@@ -1,6 +1,5 @@
 using PRG1_MAUI_ERP_Activum.Model;
 using PRG1_MAUI_ERP_Activum.Services;
-using System.Diagnostics;
 
 namespace PRG1_MAUI_ERP_Activum.View;
 
@@ -24,6 +23,18 @@ public partial class SelectedCustomerNotesPage : ContentPage
 
             CustomerNotes.ItemsSource = null;
             CustomerNotes.ItemsSource = _service.GetNotesForCustomer(selectedCustomerService.SelectedCustomer.Id);
+        }
+    }
+
+    private void Save_Clicked(object sender, EventArgs e)
+    {
+        Button button = (Button)sender;
+        Note note = (Note)button.BindingContext;
+        if (note != null)
+        {
+            Entry entry = (Entry)button.Parent.FindByName("MessageEntry");
+            note.Message = entry.Text;
+            note.EditDate = DateTime.Now;
         }
     }
 

@@ -23,10 +23,11 @@
                 x:Name="CustomerNotes">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <Grid RowDefinitions="Auto, *" RowSpacing="10" ColumnDefinitions="Auto, *" ColumnSpacing="10" Padding="10">
+                        <Grid RowDefinitions="Auto, *" RowSpacing="10" ColumnDefinitions="Auto, *, Auto" ColumnSpacing="10" Padding="10">
                             <Label Grid.Row="0" Text="{Binding CreatedDate, StringFormat='{0:yyyy-MM-dd HH:mm}'}" FontAttributes="Bold" />
                             <Label Grid.Row="0" Grid.Column="1" Text="{Binding EditDate, StringFormat='(redigerad: {0:yyyy-MM-dd HH:mm})'}" FontAttributes="Bold" />
-                            <Entry Grid.Row="1" Grid.ColumnSpan="2" Text="{Binding Message}" />
+                            <Entry x:Name="MessageEntry" Grid.Row="1" Grid.ColumnSpan="2" Text="{Binding Message, Mode=OneWay}" />
+                            <Button Grid.Row="1" Grid.Column="2" Text="Spara" Clicked="Save_Clicked" />
                         </Grid>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
