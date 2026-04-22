@@ -90,7 +90,7 @@ public partial class SelectedCustomerInsurancePage : ContentPage
             updateMessage += "Inget";
         }
 
-        DisplayAlertAsync("Uppdatera Försäkringen", updateMessage, "Ok");
+        DisplayAlertAsync("Uppdatera Försäkringen för Kunden", updateMessage, "Ok");
 
         _service.UpdateInsurance(selectedCustomerService.SelectedInsurance);
     }
