@@ -1,7 +1,11 @@
-﻿namespace PRG1_MAUI_ERP_Activum.View
+﻿using PRG1_MAUI_ERP_Activum.Services;
+
+namespace PRG1_MAUI_ERP_Activum.View
 {
     public partial class MainPage : ContentPage
     {
+
+        private readonly RegisterService _service = RegisterService.Instance;
         public MainPage()
         {
             InitializeComponent();
@@ -15,41 +19,41 @@
         private void OnSearchClicked(object sender, EventArgs e)
         {
             PerformSearch();
+           
         }
 
 
         // TODO Sökfunktionen på startsidan är inte implementerad
-        private void PerformSearch()
+         
+
+
+            private void PerformSearch()
         {
-            string input = CustomerIdEntry.Text?.Trim();
-
-            if (string.IsNullOrWhiteSpace(input))
+            string search = CustomerIdEntry.Text;
+            List<Guid> customersFound = new List<Guid>();
+            foreach (var customer in _service.Customers)
             {
-                InsuranceStatusLabel.Text = "Ingen kund angiven.";
-                InsuranceStatusLabel.TextColor = Colors.Red;
-                return;
+                if (customer.FirstName.ToLower().Contains(search.ToLower()))
+                {
+                    customersFound.Add(customer.Id);
+                }
+                else if (customer.LastName.ToLower().Contains(search.ToLower()))
+                {
+                    customersFound.Add(customer.Id);
+                }
+                else if (customer.Phone.Contains(search))
+                {
+                    customersFound.Add(customer.Id);
+                }
             }
-
-            bool custumerFound = LookupCustomer(input);
-
-            if (custumerFound)
-            {
-                // TODO Det finns ingen lista över vare sig kunder eller försäkringar. Ändra!
-                InsuranceStatusLabel.Text = "Kund hittad — har 2 aktiva försäkringar.";
-                InsuranceStatusLabel.TextColor = Colors.Green;
-            }
-            else
-            {
-                InsuranceStatusLabel.Text = "Kund saknas i registret.";
-                InsuranceStatusLabel.TextColor = Colors.OrangeRed;
-            }
+            CustomersCollection.ItemsSource = _service.Customers.Where(c => customersFound.Contains(c.Id));
+            CustomersCollection.IsVisible = true;
         }
 
-        private bool LookupCustomer(string input)
-        {
-            // TODO just: alla inputs på startsidan som slutar på "1" anses existera. Ändra!
-            return input.EndsWith("1");
-        }
+        
+
+       // private bool LookupCustomer(string input)
+       
 
         private async void OnSaveNotesClicked(object sender, EventArgs e)
         {
@@ -64,6 +68,11 @@
 
             // TODO Skadeanmälan sparas inte just nu.
             await DisplayAlertAsync("Sparat", $"Anteckning sparad för datum: {date:d}", "OK");
+        }
+
+        private void CustomersCollection_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
 }
