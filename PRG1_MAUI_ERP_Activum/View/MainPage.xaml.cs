@@ -1,4 +1,5 @@
-﻿using PRG1_MAUI_ERP_Activum.Services;
+﻿using PRG1_MAUI_ERP_Activum.Model;
+using PRG1_MAUI_ERP_Activum.Services;
 
 namespace PRG1_MAUI_ERP_Activum.View
 {
@@ -6,9 +7,13 @@ namespace PRG1_MAUI_ERP_Activum.View
     {
 
         private readonly RegisterService _service = RegisterService.Instance;
+
+        Customer? SelectedCustomer = null;
+        Insurance? SelectedInsurance = null;
         public MainPage()
         {
             InitializeComponent();
+            CustomersCollection.ItemsSource = _service.Customers;
         }
 
         private void OnSearchCompleted(object sender, EventArgs e)
@@ -21,12 +26,6 @@ namespace PRG1_MAUI_ERP_Activum.View
             PerformSearch();
            
         }
-
-
-        // TODO Sökfunktionen på startsidan är inte implementerad
-         
-
-
             private void PerformSearch()
         {
             string search = CustomerIdEntry.Text;
@@ -54,6 +53,7 @@ namespace PRG1_MAUI_ERP_Activum.View
 
        // private bool LookupCustomer(string input)
        
+       
 
         private async void OnSaveNotesClicked(object sender, EventArgs e)
         {
@@ -71,6 +71,24 @@ namespace PRG1_MAUI_ERP_Activum.View
         }
 
         private void CustomersCollection_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var newCustomer = e.CurrentSelection.FirstOrDefault() as Customer;
+            if (newCustomer == null)
+            {
+                CustomerInsurances.ItemsSource = null;
+                ChosenCustomerLayout.IsVisible = false;
+            }
+            else
+            {
+                CustomerInsurances.ItemsSource = _service.GetInsurancesForCustomer(newCustomer);
+                ChosenCustomerLayout.IsVisible = true;
+            }
+            
+            SelectedCustomer = newCustomer;
+            ChosenCustomerLayout.IsVisible = true;
+        }
+
+        private void CustomerInsurances_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
         }

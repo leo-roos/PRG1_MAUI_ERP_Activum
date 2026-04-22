@@ -72,11 +72,39 @@
                    FontAttributes="Bold"
                    Margin="0,30,0,4"/>
 
-            <Label x:Name="InsuranceStatusLabel"
-                   Grid.Row="5"
-                   Grid.ColumnSpan="2"
-                   Text="Ingen sökning ännu"
-                   TextColor="Gray" />
+
+
+
+            <VerticalStackLayout x:Name="ChosenCustomerLayout" Spacing="10" IsVisible="False" Grid.Row="5">
+               
+
+                <CollectionView
+                    x:Name="CustomerInsurances"
+                    SelectionChanged="CustomerInsurances_SelectionChanged"
+                    SelectionMode="Single">
+                    <CollectionView.Header>
+                        <Grid RowDefinitions="*, Auto" RowSpacing="5" ColumnDefinitions="1*,1*,1*,1*" Padding="10">
+                            <Label Text="Typ" FontAttributes="Bold" Grid.Column="0" />
+                            <Label Text="Kostnad" FontAttributes="Bold" Grid.Column="1" />
+                            <Label Text="Startdatum" FontAttributes="Bold" Grid.Column="2" />
+                            <Label Text="Slutdatum" FontAttributes="Bold" Grid.Column="3" />
+
+                            <Border Grid.Row="1" Grid.ColumnSpan="4"></Border>
+                        </Grid>
+                    </CollectionView.Header>
+
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid ColumnDefinitions="1*,1*,1*,1*" Padding="10">
+                                <Label Text="{Binding Type}" Grid.Column="0" Padding="5, 0, 0, 0" />
+                                <Label Text="{Binding MonthlyCost, StringFormat='{0} kr / månad'}" Grid.Column="1" />
+                                <Label Text="{Binding StartDate, StringFormat='{0:yyyy-MM-dd}'}" Grid.Column="2" />
+                                <Label Text="{Binding EndDate, StringFormat='{0:yyyy-MM-dd}'}" Grid.Column="3" />
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </VerticalStackLayout>
 
             <Label Grid.Row="6" Grid.ColumnSpan="2"
                    Text="Skadeståndsanmälan (anteckningar)"
