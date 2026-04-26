@@ -11,8 +11,6 @@ public partial class CustomersPage : ContentPage
     public CustomersPage()
 	{
 		InitializeComponent();
-
-        CustomersCollection.ItemsSource = _service.Customers;
     }
 
     protected override async void OnAppearing()
@@ -22,6 +20,8 @@ public partial class CustomersPage : ContentPage
         selectedCustomerService.UpdateSelectedCustomer(null);
         selectedCustomerService.UpdateSelectedInsurace(null);
         CustomersCollection.SelectedItem = null;
+        CustomersCollection.ItemsSource = null;
+        CustomersCollection.ItemsSource = _service.Customers;
     }
 
     private void Customers_SelectionChanged(object sender, SelectionChangedEventArgs e)

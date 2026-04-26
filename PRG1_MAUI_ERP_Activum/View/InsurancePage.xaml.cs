@@ -13,8 +13,6 @@ public partial class InsurancePage : ContentPage
     public InsurancePage()
 	{
 		InitializeComponent();
-
-        Insurances_CollectionView.ItemsSource = _service.Insurances;
     }
     protected override async void OnAppearing()
     {
