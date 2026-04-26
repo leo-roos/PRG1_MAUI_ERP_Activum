@@ -8,39 +8,25 @@
 
     <ScrollView>
         <Grid Padding="20"
-              RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto, Auto"
-              ColumnDefinitions="*,Auto"
+              RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto"
+              ColumnDefinitions="*"
               RowSpacing="10">
 
-            <Image Grid.Row="0" Grid.ColumnSpan="2"
-                   Source="{AppThemeBinding Light='logga_activum_svart.png', Dark='logga_activum_vit.png'}"
+            <Image Source="{AppThemeBinding Light='logga_activum_svart.png', Dark='logga_activum_vit.png'}"
                    WidthRequest="200"
                    HeightRequest="100" />
 
-            <Label Grid.Row="1" Grid.ColumnSpan="2"
-                   Text="Kundnummer / Personnummer"
-                   FontAttributes="Bold"
-                   Margin="0,0,0,4"/>
+            <Label Grid.Row="1"
+                   Text="Sök efter kund"
+                   FontAttributes="Bold" />
 
             <Entry x:Name="CustomerIdEntry"
                    Grid.Row="2"
-                   Grid.Column="0"
-                   Placeholder="Ange kundnr/personnr"
+                   Placeholder="förnamn, efternamn, email eller telefon"
                    ReturnType="Search"
-                   Completed="OnSearchCompleted" />
+                   TextChanged="CustomerIdEntry_TextChanged" />
 
-            <ImageButton x:Name="SearchButton"
-                         Grid.Row="2"
-                         Grid.Column="1"
-                         Source="{AppThemeBinding Light='search.png', Dark='search_white.png'}"
-                         BackgroundColor="Transparent"
-                         HeightRequest="20"
-                         WidthRequest="20"
-                         Margin="10,0,0,0"
-                         Aspect="Fill"
-                         Clicked="OnSearchClicked" />
-
-            <CollectionView Grid.Row="3" IsVisible="False"
+            <CollectionView Grid.Row="3"
             x:Name="CustomersCollection"
             SelectionMode="Single"
             SelectionChanged="CustomersCollection_SelectionChanged">
@@ -67,16 +53,9 @@
                 </CollectionView.ItemTemplate>
             </CollectionView>
 
-            <Label Grid.Row="4" Grid.ColumnSpan="2"
-                   Text="Försäkringar aktuell kund"
-                   FontAttributes="Bold"
-                   Margin="0,30,0,4"/>
-
-
-
-
-            <VerticalStackLayout x:Name="ChosenCustomerLayout" Spacing="10" IsVisible="False" Grid.Row="5">
-               
+            <VerticalStackLayout Grid.Row="4" Spacing="10" IsVisible="False" x:Name="ChosenCustomerLayout">
+                <Label Text="Försäkringar aktuell kund"
+                    FontAttributes="Bold" />
 
                 <CollectionView
                     x:Name="CustomerInsurances"
@@ -106,30 +85,25 @@
                 </CollectionView>
             </VerticalStackLayout>
 
-            <Label Grid.Row="6" Grid.ColumnSpan="2"
+            <Label Grid.Row="5"
                    Text="Skadeståndsanmälan (anteckningar)"
-                   FontAttributes="Bold"
-                   Margin="0,30,0,4"/>
+                   FontAttributes="Bold" />
 
             <Editor x:Name="NotesEditor"
-                    Grid.Row="7"
-                    Grid.ColumnSpan="2"
+                    Grid.Row="6"
                     HeightRequest="160"
                     AutoSize="TextChanges" />
 
-            <Label Grid.Row="8" Grid.ColumnSpan="2"
+            <Label Grid.Row="7"
                    Text="Datum skadeanmälan mottogs"
-                   FontAttributes="Bold"
-                   Margin="0,20,0,4"/>
+                   FontAttributes="Bold" />
 
             <DatePicker x:Name="DatePickerField"
-                        Grid.Row="9"
-                        Grid.ColumnSpan="2"
+                        Grid.Row="8"
                         Date="{x:Static sys:DateTime.Today}" />            
             
-            <Button Grid.Row="10" Grid.ColumnSpan="2"
+            <Button Grid.Row="9"
                     Text="Spara anteckning"
-                    Margin="0,20,0,0"
                     Clicked="OnSaveNotesClicked" />
 
         </Grid>

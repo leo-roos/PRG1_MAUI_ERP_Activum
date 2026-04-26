@@ -1,5 +1,6 @@
 ﻿using PRG1_MAUI_ERP_Activum.Model;
 using PRG1_MAUI_ERP_Activum.Services;
+using System.Diagnostics;
 
 namespace PRG1_MAUI_ERP_Activum.View
 {
@@ -10,23 +11,27 @@ namespace PRG1_MAUI_ERP_Activum.View
 
         Customer? SelectedCustomer = null;
         Insurance? SelectedInsurance = null;
+
         public MainPage()
         {
             InitializeComponent();
+        }
+
+        protected override async void OnAppearing()
+        {
+            base.OnAppearing();
+
             CustomersCollection.ItemsSource = _service.Customers;
+            CustomersCollection.IsVisible = false;
+            ChosenCustomerLayout.IsVisible = false;
         }
 
-        private void OnSearchCompleted(object sender, EventArgs e)
+        private void CustomerIdEntry_TextChanged(object sender, TextChangedEventArgs e)
         {
             PerformSearch();
         }
 
-        private void OnSearchClicked(object sender, EventArgs e)
-        {
-            PerformSearch();
-           
-        }
-            private void PerformSearch()
+        private void PerformSearch()
         {
             string search = CustomerIdEntry.Text;
             List<Guid> customersFound = new List<Guid>();
@@ -45,15 +50,19 @@ namespace PRG1_MAUI_ERP_Activum.View
                     customersFound.Add(customer.Id);
                 }
             }
+
+            if (string.IsNullOrWhiteSpace(search) && SelectedCustomer != null) {
+                customersFound.Clear();
+                customersFound.Add(SelectedCustomer.Id);
+            } else if (string.IsNullOrWhiteSpace(search) && SelectedCustomer == null) {
+                CustomersCollection.ItemsSource = _service.Customers;
+                CustomersCollection.IsVisible = false;
+                return;
+            }
+
             CustomersCollection.ItemsSource = _service.Customers.Where(c => customersFound.Contains(c.Id));
             CustomersCollection.IsVisible = true;
         }
-
-        
-
-       // private bool LookupCustomer(string input)
-       
-       
 
         private async void OnSaveNotesClicked(object sender, EventArgs e)
         {
@@ -73,17 +82,16 @@ namespace PRG1_MAUI_ERP_Activum.View
         private void CustomersCollection_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var newCustomer = e.CurrentSelection.FirstOrDefault() as Customer;
+            CustomerInsurances.SelectedItem = null;
             if (newCustomer == null)
             {
                 CustomerInsurances.ItemsSource = null;
-                ChosenCustomerLayout.IsVisible = false;
             }
             else
             {
                 CustomerInsurances.ItemsSource = _service.GetInsurancesForCustomer(newCustomer);
-                ChosenCustomerLayout.IsVisible = true;
             }
-            
+
             SelectedCustomer = newCustomer;
             ChosenCustomerLayout.IsVisible = true;
         }
