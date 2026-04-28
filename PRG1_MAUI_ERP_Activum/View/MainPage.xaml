@@ -57,6 +57,8 @@
                 <Label Text="Försäkringar aktuell kund"
                     FontAttributes="Bold" />
 
+                <Label Text="Tryck på en försäkring för att ändra försäkringsdata" />
+
                 <CollectionView
                     x:Name="CustomerInsurances"
                     SelectionChanged="CustomerInsurances_SelectionChanged"
