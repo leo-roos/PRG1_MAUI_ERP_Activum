@@ -22,7 +22,10 @@
             <Label Grid.Row="4" Text="Pris (kr/månad)" FontAttributes="Bold" />
             <Entry Grid.Row="5" x:Name="CostEntry" Placeholder="500" />
 
-            <Button Grid.Row="6" Text="Spara" Clicked="Save_Clicked" />
+            <Grid Grid.Row="6" ColumnDefinitions="1*, 3*" ColumnSpacing="10">
+                <Button BackgroundColor="Red" Text="Ta Bort" Clicked="Remove_Clicked" />
+                <Button Grid.Column="1" Text="Spara" Clicked="Save_Clicked" />
+            </Grid>
 
             <Button Grid.Row="8" Clicked="GoBack_Clicked" Text="Gå Tillbaka" />
         </Grid>

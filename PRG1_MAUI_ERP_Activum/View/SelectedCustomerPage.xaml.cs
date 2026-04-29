@@ -32,8 +32,11 @@ public partial class SelectedCustomerPage : ContentPage
     {
         var selected = e.CurrentSelection.FirstOrDefault() as Insurance;
 
-        selectedCustomerService.UpdateSelectedInsurace(selected);
-        selectedCustomerService.GotoPage();
+        if (selected != null)
+        {
+            selectedCustomerService.UpdateSelectedInsurace(selected);
+            selectedCustomerService.GotoPage();
+        }
     }
 
     private void ViewNotes_Clicked(object sender, EventArgs e)

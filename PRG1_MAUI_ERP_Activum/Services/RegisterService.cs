@@ -87,6 +87,15 @@ namespace PRG1_MAUI_ERP_Activum.Services
                 existingInsurance.IsActive = insurance.IsActive;
             }
         }
+
+        public void RemoveInsurance(Insurance insurance)
+        {
+            bool exists = GetInsurance(insurance.Id) != null;
+            if (exists)
+            {
+                Insurances.Remove(insurance);
+            }
+        }
         public void UpdateCustomer(Customer customer)
         {
             Customer? existingCustomer = GetCustomer(customer.Id);
