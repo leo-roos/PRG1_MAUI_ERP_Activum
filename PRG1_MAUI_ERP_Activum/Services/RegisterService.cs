@@ -87,7 +87,6 @@ namespace PRG1_MAUI_ERP_Activum.Services
                 existingInsurance.IsActive = insurance.IsActive;
             }
         }
-
         public void UpdateCustomer(Customer customer)
         {
             Customer? existingCustomer = GetCustomer(customer.Id);
@@ -98,6 +97,11 @@ namespace PRG1_MAUI_ERP_Activum.Services
                 existingCustomer.Email = customer.Email;
                 existingCustomer.Phone = customer.Phone;
             }
+        }
+
+        public void AddCustomer(Customer customer)
+        {
+            Customers.Add(customer);
         }
 
         public ObservableCollection<Insurance> GetInsurancesForCustomer(Guid id) {

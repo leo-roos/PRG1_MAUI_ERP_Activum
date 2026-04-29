@@ -5,7 +5,7 @@
              Title="Kunder"
              Style="{StaticResource Key=BasePageStyle}">
     <ScrollView>
-        <VerticalStackLayout Padding="10">
+        <VerticalStackLayout Padding="10" Spacing="10">
             <Label
                 Padding="10"
                 Text="Kunder"
@@ -14,10 +14,11 @@
                 VerticalOptions="Center" 
                 HorizontalOptions="Center" />
 
-            <VerticalStackLayout Padding="20" Spacing="10" MaximumWidthRequest="400">
+            <VerticalStackLayout Padding="10" Spacing="10" MaximumWidthRequest="400">
                 <Label
                     Text="Sök efter kunder"
-                    HorizontalOptions="Center" />
+                    HorizontalOptions="Center"
+                    FontAttributes="Bold" />
 
                 <Entry
                     x:Name="SearchCustomers"
@@ -52,6 +53,8 @@
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
+
+            <Button Clicked="AddNewCustomer_Clicked" Text="Lägg till ny kund" />
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>
