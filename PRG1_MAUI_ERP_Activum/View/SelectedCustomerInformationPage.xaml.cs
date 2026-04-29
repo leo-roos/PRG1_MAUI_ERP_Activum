@@ -21,7 +21,36 @@ public partial class SelectedCustomerInformationPage : ContentPage
         {
             Title.Text = $"{selectedCustomerService.SelectedCustomer.FirstName} {selectedCustomerService.SelectedCustomer.LastName} - Kund Information";
 
+            FirstNameEntry.Text = selectedCustomerService.SelectedCustomer.FirstName;
+            LastNameEntry.Text = selectedCustomerService.SelectedCustomer.LastName;
+            EmailEntry.Text = selectedCustomerService.SelectedCustomer.Email;
+            PhoneNumberEntry.Text = selectedCustomerService.SelectedCustomer.Phone;
+        }
+    }
 
+    private void SaveButton_Clicked(object sender, EventArgs e)
+    {
+        if (!string.IsNullOrWhiteSpace(FirstNameEntry.Text) &&
+            !string.IsNullOrWhiteSpace(LastNameEntry.Text) &&
+            !string.IsNullOrWhiteSpace(EmailEntry.Text) &&
+            !string.IsNullOrWhiteSpace(PhoneNumberEntry.Text))
+        {
+
+            var updatedCustomer = new Customer
+            {
+                Id = selectedCustomerService.SelectedCustomer.Id,
+                FirstName = FirstNameEntry.Text,
+                LastName = LastNameEntry.Text,
+                Email = EmailEntry.Text,
+                Phone = PhoneNumberEntry.Text
+            };
+            _service.UpdateCustomer(updatedCustomer);
+            Title.Text = $"{updatedCustomer.FirstName} {updatedCustomer.LastName} - Kund Information";
+            DisplayAlertAsync("Kund Uppdaterad", "Kundinformationen har uppdaterats.", "OK");
+        }
+        else
+        {
+            DisplayAlertAsync("Fel", "Vänligen fyll i alla fält.", "OK");
         }
     }
 

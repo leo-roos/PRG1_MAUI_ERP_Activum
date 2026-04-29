@@ -5,7 +5,7 @@
              Title="Vald Kund"
              Style="{StaticResource Key=BasePageStyle}">
     <ScrollView>
-        <Grid RowDefinitions="Auto, Auto, Auto, Auto, *, Auto" Padding="10">
+        <Grid RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, *, Auto" RowSpacing="10" Padding="10">
             <Label
                 x:Name="Title"
                 Grid.Row="0"
@@ -16,9 +16,21 @@
                 VerticalOptions="Center" 
                 HorizontalOptions="Center" />
 
-            
+            <Label Text="Förnamn" FontAttributes="Bold" Grid.Row="1" />
+            <Entry x:Name="FirstNameEntry" Grid.Row="2" Placeholder="Ange förnamn" />
 
-            <Button Clicked="GoBack_Clicked" Grid.Row="5" Text="Gå Tillbaka" />
+            <Label Text="Efternamn" FontAttributes="Bold" Grid.Row="3" />
+            <Entry x:Name="LastNameEntry" Grid.Row="4" Placeholder="Ange efternamn" />
+
+            <Label Text="E-mail" FontAttributes="Bold" Grid.Row="5" />
+            <Entry x:Name="EmailEntry" Grid.Row="6" Placeholder="Ange e-mail" />
+
+            <Label Text="Telefonnummer" FontAttributes="Bold" Grid.Row="7" />
+            <Entry x:Name="PhoneNumberEntry" Grid.Row="8" Placeholder="Ange telefonnummer" />
+
+            <Button Clicked="SaveButton_Clicked" Grid.Row="9" Text="Spara" />
+
+            <Button Clicked="GoBack_Clicked" Grid.Row="11" Text="Gå Tillbaka" />
         </Grid>
     </ScrollView>
 </ContentPage>

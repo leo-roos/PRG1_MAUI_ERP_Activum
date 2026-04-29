@@ -88,6 +88,18 @@ namespace PRG1_MAUI_ERP_Activum.Services
             }
         }
 
+        public void UpdateCustomer(Customer customer)
+        {
+            Customer? existingCustomer = GetCustomer(customer.Id);
+            if (existingCustomer != null)
+            {
+                existingCustomer.FirstName = customer.FirstName;
+                existingCustomer.LastName = customer.LastName;
+                existingCustomer.Email = customer.Email;
+                existingCustomer.Phone = customer.Phone;
+            }
+        }
+
         public ObservableCollection<Insurance> GetInsurancesForCustomer(Guid id) {
             return Customers.FirstOrDefault(i => i.Id == id).Insurances;
         }
