@@ -70,7 +70,7 @@ namespace PRG1_MAUI_ERP_Activum.View
                 Note newNote = new Note(notes);
                 if (SelectedCustomer != null)
                 {
-                    newNote.CreatedDate = DatePickerField.Date;
+                    newNote.CreatedDate = (DateTime)date;
                     SelectedCustomer.Notes.Add(newNote);
 
                 }
