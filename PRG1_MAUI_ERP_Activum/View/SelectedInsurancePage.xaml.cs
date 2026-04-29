@@ -32,37 +32,16 @@ public partial class SelectedInsurancePage : ContentPage
             return;
         }
 
-        bool isTypeChanged = false;
-        bool isCostChanged = false;
-
-        if (selectedInsuranceService.SelectedInsurance.Type != TypeEntry.Text)
+        if (!string.IsNullOrWhiteSpace(TypeEntry.Text) && int.TryParse(CostEntry.Text, out int newCost))
         {
             selectedInsuranceService.SelectedInsurance.Type = TypeEntry.Text;
-            isTypeChanged = true;
-        }
-
-        if (int.TryParse(CostEntry.Text, out int newCost))
+            selectedInsuranceService.SelectedInsurance.MonthlyCost = newCost;
+            DisplayAlertAsync("Uppdatera Försäkringen", "Försäkringen har uppdaterats", "Ok");
+        } else
         {
-            if (newCost != selectedInsuranceService.SelectedInsurance.MonthlyCost)
-            {
-                selectedInsuranceService.SelectedInsurance.MonthlyCost = newCost;
-                isCostChanged = true;
-            }
+            DisplayAlertAsync("Fel", "Vänligen fyll i alla fält.", "OK");
         }
 
-        string updateMessage = "Uppdaterade följande: ";
-        if (isTypeChanged)
-        {
-            updateMessage += "Typ, ";
-        }
-        if (isCostChanged)
-        {
-            updateMessage += "Månads Pris, ";
-        }
-
-        DisplayAlertAsync("Uppdatera Försäkringen", updateMessage, "Ok");
-
-        _service.UpdateInsurance(selectedInsuranceService.SelectedInsurance);
     }
 
     private void GoBack_Clicked(object sender, EventArgs e)
