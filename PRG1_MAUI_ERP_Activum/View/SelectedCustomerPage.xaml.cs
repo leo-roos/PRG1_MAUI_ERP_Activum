@@ -45,4 +45,9 @@ public partial class SelectedCustomerPage : ContentPage
         selectedCustomerService.UpdateSelectedCustomer(null);
         selectedCustomerService.GotoPage();
     }
+
+    private void EditCustomerInfo_Clicked(object sender, EventArgs e)
+    {
+        selectedCustomerService.ViewInformation();
+    }
 }

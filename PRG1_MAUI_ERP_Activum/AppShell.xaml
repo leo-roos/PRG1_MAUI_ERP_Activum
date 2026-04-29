@@ -12,9 +12,11 @@
 
     <ShellContent Route="LoginPage" ContentTemplate="{DataTemplate local:LoginPage}" />
 
+    <ShellContent Route="NewCustomerPage" ContentTemplate="{DataTemplate local:NewCustomerPage}" />
     <ShellContent Route="SelectedCustomerPage" ContentTemplate="{DataTemplate local:SelectedCustomerPage}" />
     <ShellContent Route="SelectedCustomerInsurancePage" ContentTemplate="{DataTemplate local:SelectedCustomerInsurancePage}" />
     <ShellContent Route="SelectedCustomerNotesPage" ContentTemplate="{DataTemplate local:SelectedCustomerNotesPage}" />
+    <ShellContent Route="SelectedCustomerInformationPage" ContentTemplate="{DataTemplate local:SelectedCustomerInformationPage}" />
 
     <ShellContent Route="SelectedInsurancePage" ContentTemplate="{DataTemplate local:SelectedInsurancePage}" />
     <ShellContent Route="NewInsurancePage" ContentTemplate="{DataTemplate local:NewInsurancePage}" />
