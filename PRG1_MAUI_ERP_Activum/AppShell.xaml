@@ -15,6 +15,7 @@
     <ShellContent Route="NewCustomerPage" ContentTemplate="{DataTemplate local:NewCustomerPage}" />
     <ShellContent Route="SelectedCustomerPage" ContentTemplate="{DataTemplate local:SelectedCustomerPage}" />
     <ShellContent Route="SelectedCustomerInsurancePage" ContentTemplate="{DataTemplate local:SelectedCustomerInsurancePage}" />
+    <ShellContent Route="SelectedCustomerAddInsurancePage" ContentTemplate="{DataTemplate local:SelectedCustomerAddInsurancePage}" />
     <ShellContent Route="SelectedCustomerNotesPage" ContentTemplate="{DataTemplate local:SelectedCustomerNotesPage}" />
     <ShellContent Route="SelectedCustomerInformationPage" ContentTemplate="{DataTemplate local:SelectedCustomerInformationPage}" />
 
