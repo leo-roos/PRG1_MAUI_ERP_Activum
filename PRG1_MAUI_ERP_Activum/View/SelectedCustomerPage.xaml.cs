@@ -40,14 +40,19 @@ public partial class SelectedCustomerPage : ContentPage
         selectedCustomerService.ViewNotes();
     }
 
+    private void EditCustomerInfo_Clicked(object sender, EventArgs e)
+    {
+        selectedCustomerService.ViewInformation();
+    }
+
+    private void Button_Clicked(object sender, EventArgs e)
+    {
+
+    }
+
     private void GoBack_Clicked(object sender, EventArgs e)
     {
         selectedCustomerService.UpdateSelectedCustomer(null);
         selectedCustomerService.GotoPage();
-    }
-
-    private void EditCustomerInfo_Clicked(object sender, EventArgs e)
-    {
-        selectedCustomerService.ViewInformation();
     }
 }
