@@ -15,11 +15,6 @@ namespace PRG1_MAUI_ERP_Activum.View
         public MainPage()
         {
             InitializeComponent();
-        }
-
-        protected override async void OnAppearing()
-        {
-            base.OnAppearing();
 
             CustomersCollection.ItemsSource = _service.Customers;
             CustomersCollection.IsVisible = false;
@@ -34,22 +29,11 @@ namespace PRG1_MAUI_ERP_Activum.View
         private void PerformSearch()
         {
             string search = CustomerIdEntry.Text;
-            List<Guid> customersFound = new List<Guid>();
-            foreach (var customer in _service.Customers)
-            {
-                if (customer.FirstName.ToLower().Contains(search.ToLower()))
-                {
-                    customersFound.Add(customer.Id);
-                }
-                else if (customer.LastName.ToLower().Contains(search.ToLower()))
-                {
-                    customersFound.Add(customer.Id);
-                }
-                else if (customer.Phone.Contains(search))
-                {
-                    customersFound.Add(customer.Id);
-                }
-            }
+            List<Guid> customersFound = _service.Customers.Where(c =>
+                c.FirstName.ToLower().Contains(search.ToLower()) ||
+                c.LastName.ToLower().Contains(search.ToLower()) ||
+                c.Phone.Contains(search)
+            ).Select(c => c.Id).ToList();
 
             if (string.IsNullOrWhiteSpace(search) && SelectedCustomer != null) {
                 customersFound.Clear();
