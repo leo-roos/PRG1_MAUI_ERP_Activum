@@ -30,7 +30,10 @@
             <Label Grid.Row="8" Text="Slut Datum" FontAttributes="Bold" />
             <DatePicker Grid.Row="9" x:Name="EndDatePicker" />
 
-            <Button Grid.Row="10" Text="Spara" Clicked="Save_Clicked" />
+            <Grid Grid.Row="10" ColumnDefinitions="1*, 3*" ColumnSpacing="10">
+                <Button BackgroundColor="Red" Text="Ta Bort" Clicked="Remove_Clicked" />
+                <Button Grid.Column="1" Text="Spara" Clicked="Save_Clicked" />
+            </Grid>
 
             <Button Clicked="GoBack_Clicked" Grid.Row="12" Text="Gå Tillbaka" />
         </Grid>

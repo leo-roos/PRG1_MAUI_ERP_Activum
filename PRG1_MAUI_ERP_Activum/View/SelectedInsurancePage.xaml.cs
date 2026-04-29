@@ -11,7 +11,7 @@ public partial class SelectedInsurancePage : ContentPage
 	{
 		InitializeComponent();
     }
-
+    
     protected override async void OnAppearing()
     {
         base.OnAppearing();
@@ -22,6 +22,22 @@ public partial class SelectedInsurancePage : ContentPage
 
             TypeEntry.Text = selectedInsuranceService.SelectedInsurance.Type;
             CostEntry.Text = selectedInsuranceService.SelectedInsurance.MonthlyCost.ToString();
+        }
+    }
+
+    private async void Remove_Clicked(object sender, EventArgs e)
+    {
+        if (selectedInsuranceService.SelectedInsurance == null)
+        {
+            return;
+        }
+
+        bool answer = await DisplayAlertAsync("Ta bort försäkringen", "Är du säker på att du vill ta bort denna försäkring?", "Ja", "Nej");
+        if (answer)
+        {
+            _service.RemoveInsurance(selectedInsuranceService.SelectedInsurance);
+            selectedInsuranceService.UpdateSelectedInsurace(null);
+            selectedInsuranceService.GotoPage();
         }
     }
 

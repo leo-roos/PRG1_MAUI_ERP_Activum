@@ -28,10 +28,25 @@ public partial class SelectedCustomerInsurancePage : ContentPage
             EndDatePicker.Date = selectedCustomerService.SelectedInsurance.EndDate;
         }
     }
+    private async void Remove_Clicked(object sender, EventArgs e)
+    {
+        if (selectedCustomerService.SelectedCustomer == null || selectedCustomerService.SelectedInsurance == null)
+        {
+            return;
+        }
+
+        bool answer = await DisplayAlertAsync("Ta bort försäkringen", "Är du säker på att du vill ta bort denna försäkring?", "Ja", "Nej");
+        if (answer)
+        {
+            selectedCustomerService.SelectedCustomer.Insurances.Remove(selectedCustomerService.SelectedInsurance);
+            selectedCustomerService.UpdateSelectedInsurace(null);
+            selectedCustomerService.GotoPage();
+        }
+    }
 
     private void Save_Clicked(object sender, EventArgs e)
     {
-        if (selectedCustomerService.SelectedInsurance == null)
+        if (selectedCustomerService.SelectedCustomer == null || selectedCustomerService.SelectedInsurance == null)
         {
             return;
         }
@@ -58,4 +73,5 @@ public partial class SelectedCustomerInsurancePage : ContentPage
         selectedCustomerService.UpdateSelectedInsurace(null);
         selectedCustomerService.GotoPage();
     }
+
 }
