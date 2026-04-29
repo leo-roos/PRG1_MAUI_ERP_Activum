@@ -8,9 +8,9 @@ namespace PRG1_MAUI_ERP_Activum.View
     {
 
         private readonly RegisterService _service = RegisterService.Instance;
+        private readonly SelectedCustomerService selectedCustomerService = SelectedCustomerService.Instance;
 
         Customer? SelectedCustomer = null;
-        Insurance? SelectedInsurance = null;
 
         public MainPage()
         {
@@ -19,6 +19,13 @@ namespace PRG1_MAUI_ERP_Activum.View
             CustomersCollection.ItemsSource = _service.Customers;
             CustomersCollection.IsVisible = false;
             ChosenCustomerLayout.IsVisible = false;
+        }
+
+        protected override async void OnAppearing()
+        {
+            base.OnAppearing();
+
+            CustomerInsurances.SelectedItem = null;
         }
 
         private void CustomerIdEntry_TextChanged(object sender, TextChangedEventArgs e)
@@ -82,7 +89,11 @@ namespace PRG1_MAUI_ERP_Activum.View
 
         private void CustomerInsurances_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            var newInsurance = e.CurrentSelection.FirstOrDefault() as Insurance;
 
+            selectedCustomerService.UpdateSelectedCustomer(SelectedCustomer);
+            selectedCustomerService.UpdateSelectedInsurace(newInsurance);
+            selectedCustomerService.GotoPage();
         }
     }
 }
