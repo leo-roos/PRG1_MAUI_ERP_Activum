@@ -1,54 +1,51 @@
-﻿namespace PRG1_MAUI_ERP_Activum.View
+﻿using PRG1_MAUI_ERP_Activum.Model;
+using PRG1_MAUI_ERP_Activum.Services;
+using System.Diagnostics;
+
+namespace PRG1_MAUI_ERP_Activum.View
 {
     public partial class MainPage : ContentPage
     {
+
+        private readonly RegisterService _service = RegisterService.Instance;
+
+        Customer? SelectedCustomer = null;
+        Insurance? SelectedInsurance = null;
+
         public MainPage()
         {
             InitializeComponent();
+
+            CustomersCollection.ItemsSource = _service.Customers;
+            CustomersCollection.IsVisible = false;
+            ChosenCustomerLayout.IsVisible = false;
         }
 
-        private void OnSearchCompleted(object sender, EventArgs e)
+        private void CustomerIdEntry_TextChanged(object sender, TextChangedEventArgs e)
         {
             PerformSearch();
         }
 
-        private void OnSearchClicked(object sender, EventArgs e)
-        {
-            PerformSearch();
-        }
-
-
-        // TODO Sökfunktionen på startsidan är inte implementerad
         private void PerformSearch()
         {
-            string input = CustomerIdEntry.Text?.Trim();
+            string search = CustomerIdEntry.Text;
+            List<Guid> customersFound = _service.Customers.Where(c =>
+                c.FirstName.ToLower().Contains(search.ToLower()) ||
+                c.LastName.ToLower().Contains(search.ToLower()) ||
+                c.Phone.Contains(search)
+            ).Select(c => c.Id).ToList();
 
-            if (string.IsNullOrWhiteSpace(input))
-            {
-                InsuranceStatusLabel.Text = "Ingen kund angiven.";
-                InsuranceStatusLabel.TextColor = Colors.Red;
+            if (string.IsNullOrWhiteSpace(search) && SelectedCustomer != null) {
+                customersFound.Clear();
+                customersFound.Add(SelectedCustomer.Id);
+            } else if (string.IsNullOrWhiteSpace(search) && SelectedCustomer == null) {
+                CustomersCollection.ItemsSource = _service.Customers;
+                CustomersCollection.IsVisible = false;
                 return;
             }
 
-            bool custumerFound = LookupCustomer(input);
-
-            if (custumerFound)
-            {
-                // TODO Det finns ingen lista över vare sig kunder eller försäkringar. Ändra!
-                InsuranceStatusLabel.Text = "Kund hittad — har 2 aktiva försäkringar.";
-                InsuranceStatusLabel.TextColor = Colors.Green;
-            }
-            else
-            {
-                InsuranceStatusLabel.Text = "Kund saknas i registret.";
-                InsuranceStatusLabel.TextColor = Colors.OrangeRed;
-            }
-        }
-
-        private bool LookupCustomer(string input)
-        {
-            // TODO just: alla inputs på startsidan som slutar på "1" anses existera. Ändra!
-            return input.EndsWith("1");
+            CustomersCollection.ItemsSource = _service.Customers.Where(c => customersFound.Contains(c.Id));
+            CustomersCollection.IsVisible = true;
         }
 
         private async void OnSaveNotesClicked(object sender, EventArgs e)
@@ -64,6 +61,28 @@
 
             // TODO Skadeanmälan sparas inte just nu.
             await DisplayAlertAsync("Sparat", $"Anteckning sparad för datum: {date:d}", "OK");
+        }
+
+        private void CustomersCollection_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var newCustomer = e.CurrentSelection.FirstOrDefault() as Customer;
+            CustomerInsurances.SelectedItem = null;
+            if (newCustomer == null)
+            {
+                CustomerInsurances.ItemsSource = null;
+            }
+            else
+            {
+                CustomerInsurances.ItemsSource = _service.GetInsurancesForCustomer(newCustomer);
+            }
+
+            SelectedCustomer = newCustomer;
+            ChosenCustomerLayout.IsVisible = true;
+        }
+
+        private void CustomerInsurances_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
 }
