@@ -1,6 +1,5 @@
 using PRG1_MAUI_ERP_Activum.Model;
 using PRG1_MAUI_ERP_Activum.Services;
-using System.Diagnostics;
 
 namespace PRG1_MAUI_ERP_Activum.View;
 
@@ -21,10 +20,11 @@ public partial class SelectedCustomerPage : ContentPage
         selectedCustomerService.UpdateSelectedInsurace(null);
         if (selectedCustomerService.SelectedCustomer != null)
         {
+            Title.Text = $"{selectedCustomerService.SelectedCustomer.FirstName} {selectedCustomerService.SelectedCustomer.LastName}";
+
+            CustomerInsurances.SelectedItem = null;
             CustomerInsurances.ItemsSource = null;
             CustomerInsurances.ItemsSource = _service.GetInsurancesForCustomer(selectedCustomerService.SelectedCustomer.Id);
-            CustomerInsurances.SelectedItem = null;
-            Title.Text = $"{selectedCustomerService.SelectedCustomer.FirstName} {selectedCustomerService.SelectedCustomer.LastName}";
         }
     }
 
@@ -35,9 +35,19 @@ public partial class SelectedCustomerPage : ContentPage
         selectedCustomerService.UpdateSelectedInsurace(selected);
     }
 
+    private void ViewNotes_Clicked(object sender, EventArgs e)
+    {
+        selectedCustomerService.ViewNotes();
+    }
+
     private void GoBack_Clicked(object sender, EventArgs e)
     {
         selectedCustomerService.UpdateSelectedCustomer(null);
         selectedCustomerService.GotoPage();
+    }
+
+    private void EditCustomerInfo_Clicked(object sender, EventArgs e)
+    {
+        selectedCustomerService.ViewInformation();
     }
 }

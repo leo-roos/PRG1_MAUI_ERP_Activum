@@ -5,7 +5,7 @@
              Title="Försäkringar"
              Style="{StaticResource Key=BasePageStyle}">
     <ScrollView>
-        <Grid RowDefinitions="Auto, Auto, Auto, Auto, *, Auto" ColumnDefinitions="*" RowSpacing="10" Padding="10">
+        <Grid RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, Auto, *, Auto" RowSpacing="10" Padding="10">
             <Label
                 x:Name="Title"
                 Grid.Row="0"
@@ -16,12 +16,15 @@
                 VerticalOptions="Center" 
                 HorizontalOptions="Center" />
 
-            <Label Grid.Row="1" Text="Ändra Kostnad:" />
-            <Entry Grid.Row="2" x:Name="PriceEntry" Keyboard="Numeric" HorizontalOptions="Start" />
+            <Label Grid.Row="2" Text="Typ" FontAttributes="Bold" />
+            <Entry Grid.Row="3" x:Name="TypeEntry" Placeholder="Bilförsäkring" />
 
-            <Button Grid.Row="3" Text="Spara" Clicked="Save_ChangeOfPrice" />
+            <Label Grid.Row="4" Text="Pris (kr/månad)" FontAttributes="Bold" />
+            <Entry Grid.Row="5" x:Name="CostEntry" Placeholder="500" />
 
-            <Button Grid.Row="5" Clicked="GoBack_Clicked" Text="Gå Tillbaka" />
+            <Button Grid.Row="6" Text="Spara" Clicked="Save_Clicked" />
+
+            <Button Grid.Row="8" Clicked="GoBack_Clicked" Text="Gå Tillbaka" />
         </Grid>
     </ScrollView>
 </ContentPage>

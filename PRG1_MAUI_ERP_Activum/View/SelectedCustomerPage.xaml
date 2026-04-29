@@ -5,7 +5,7 @@
              Title="Vald Kund"
              Style="{StaticResource Key=BasePageStyle}">
     <ScrollView>
-        <Grid RowDefinitions="Auto, Auto, Auto, *, Auto" Padding="10">
+        <Grid RowDefinitions="Auto, Auto, Auto, Auto, *, Auto" Padding="10">
             <Label
                 x:Name="Title"
                 Grid.Row="0"
@@ -22,7 +22,8 @@
                 Grid.Row="2"
                 x:Name="CustomerInsurances"
                 SelectionChanged="CustomerInsurances_SelectionChanged"
-                SelectionMode="Single">
+                SelectionMode="Single"
+                MaximumHeightRequest="350">
                 <CollectionView.Header>
                     <Grid RowDefinitions="*, Auto" RowSpacing="5" ColumnDefinitions="1*,1*,1*,1*" Padding="10">
                         <Label Text="Typ" FontAttributes="Bold" Grid.Column="0" />
@@ -46,7 +47,12 @@
                 </CollectionView.ItemTemplate>
             </CollectionView>
 
-            <Button Clicked="GoBack_Clicked" Grid.Row="4" Text="Gå Tillbaka" />
+            <Grid Grid.Row="3" ColumnDefinitions="*, *" ColumnSpacing="10">
+                <Button Clicked="ViewNotes_Clicked" Text="Se Anteckningar" />
+                <Button Clicked="EditCustomerInfo_Clicked" Grid.Column="1" Text="Ändra Kundinformation" />
+            </Grid>
+
+        <Button Clicked="GoBack_Clicked" Grid.Row="5" Text="Gå Tillbaka" />
         </Grid>
     </ScrollView>
 </ContentPage>

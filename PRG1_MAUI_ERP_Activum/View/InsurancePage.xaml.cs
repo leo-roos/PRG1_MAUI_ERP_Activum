@@ -13,8 +13,6 @@ public partial class InsurancePage : ContentPage
     public InsurancePage()
 	{
 		InitializeComponent();
-
-        Insurances_CollectionView.ItemsSource = _service.Insurances;
     }
     protected override async void OnAppearing()
     {
@@ -22,6 +20,8 @@ public partial class InsurancePage : ContentPage
 
         selectedInsuranceService.UpdateSelectedInsurace(null);
         Insurances_CollectionView.SelectedItem = null;
+        Insurances_CollectionView.ItemsSource = null;
+        Insurances_CollectionView.ItemsSource = _service.Insurances;
     }
 
     private void Insurances_CollectionView_SelectionChanged(object sender, SelectionChangedEventArgs e)

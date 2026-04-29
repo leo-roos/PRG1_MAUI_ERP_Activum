@@ -71,6 +71,15 @@
 	  <Compile Update="View\NewInsurancePage.xaml.cs">
 	    <DependentUpon>NewInsurancePage.xaml</DependentUpon>
 	  </Compile>
+	  <Compile Update="View\NewCustomerPage.xaml.cs">
+	    <DependentUpon>NewCustomerPage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="View\SelectedCustomerNotesPage.xaml.cs">
+	    <DependentUpon>SelectedCustomerNotesPage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="View\SelectedCustomerInformationPage.xaml.cs">
+	    <DependentUpon>SelectedCustomerInformationPage.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="View\SelectedInsurancePage.xaml.cs">
 	    <DependentUpon>SelectedInsurancePage.xaml</DependentUpon>
 	  </Compile>
@@ -93,6 +102,15 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="View\NewInsurancePage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="View\NewCustomerPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="View\SelectedCustomerNotesPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="View\SelectedCustomerInformationPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="View\SelectedInsurancePage.xaml">

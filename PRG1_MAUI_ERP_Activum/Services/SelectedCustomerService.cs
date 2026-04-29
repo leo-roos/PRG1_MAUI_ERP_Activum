@@ -49,5 +49,21 @@ namespace PRG1_MAUI_ERP_Activum.Services
                 GotoPage();
             }
         }
+
+        public void ViewNotes()
+        {
+            if (SelectedCustomer != null)
+            {
+                Shell.Current.GoToAsync("//SelectedCustomerNotesPage");
+            }
+        }
+
+        public void ViewInformation()
+        {
+            if (SelectedCustomer != null)
+            {
+                Shell.Current.GoToAsync("//SelectedCustomerInformationPage");
+            }
+        }
     }
 }

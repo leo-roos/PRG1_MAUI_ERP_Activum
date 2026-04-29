@@ -17,7 +17,8 @@
             <CollectionView
                 x:Name="Insurances_CollectionView"
                 SelectionMode="Single"
-                SelectionChanged="Insurances_CollectionView_SelectionChanged">
+                SelectionChanged="Insurances_CollectionView_SelectionChanged"
+                MaximumHeightRequest="350">
                 <CollectionView.Header>
                     <Grid RowDefinitions="*, Auto" RowSpacing="10" ColumnDefinitions="2*,2*" Padding="5">
                         <Label Text="Typ" FontAttributes="Bold" />

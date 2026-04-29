@@ -12,6 +12,8 @@ namespace PRG1_MAUI_ERP_Activum.Model
         public ObservableCollection<Note> Notes { get; set; } = [];
         public ObservableCollection<Insurance> Insurances { get; set; } = [];
 
+        public Customer() { }
+
         public Customer(string firstName, string lastName, string email, string phone)
         {
             FirstName = firstName;
