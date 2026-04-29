@@ -18,7 +18,7 @@ public partial class SelectedInsurancePage : ContentPage
 
         if (selectedInsuranceService.SelectedInsurance != null)
         {
-            Title.Text = $"{selectedInsuranceService.SelectedInsurance.Type}";
+            Title.Text = $"Försäkringar - {selectedInsuranceService.SelectedInsurance.Type}";
 
             TypeEntry.Text = selectedInsuranceService.SelectedInsurance.Type;
             CostEntry.Text = selectedInsuranceService.SelectedInsurance.MonthlyCost.ToString();

@@ -10,7 +10,7 @@
                 x:Name="Title"
                 Grid.Row="0"
                 Padding="10"
-                Text="Vald Kund Information"
+                Text="Lägg till ny Kund"
                 Style="{StaticResource Headline}"
                 SemanticProperties.HeadingLevel="Level1"
                 VerticalOptions="Center" 
