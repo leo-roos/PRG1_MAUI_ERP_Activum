@@ -45,9 +45,9 @@ public partial class SelectedCustomerPage : ContentPage
         selectedCustomerService.ViewInformation();
     }
 
-    private void Button_Clicked(object sender, EventArgs e)
+    private void AddInsurance_Clicked(object sender, EventArgs e)
     {
-
+        selectedCustomerService.ViewAddInsurance();
     }
 
     private void GoBack_Clicked(object sender, EventArgs e)
