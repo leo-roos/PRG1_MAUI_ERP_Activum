@@ -29,7 +29,8 @@
             <CollectionView Grid.Row="3"
             x:Name="CustomersCollection"
             SelectionMode="Single"
-            SelectionChanged="CustomersCollection_SelectionChanged">
+            SelectionChanged="CustomersCollection_SelectionChanged"
+            MaximumHeightRequest="350">
                 <CollectionView.Header>
                     <Grid RowDefinitions="*, Auto" RowSpacing="10" ColumnDefinitions="2*,2*,3*,2*" Padding="5">
                         <Label Text="Förnamn" FontAttributes="Bold" />
@@ -62,7 +63,8 @@
                 <CollectionView
                     x:Name="CustomerInsurances"
                     SelectionChanged="CustomerInsurances_SelectionChanged"
-                    SelectionMode="Single">
+                    SelectionMode="Single"
+                    MaximumHeightRequest="350">
                     <CollectionView.Header>
                         <Grid RowDefinitions="*, Auto" RowSpacing="5" ColumnDefinitions="1*,1*,1*,1*" Padding="10">
                             <Label Text="Typ" FontAttributes="Bold" Grid.Column="0" />

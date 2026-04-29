@@ -28,7 +28,8 @@
             <CollectionView
                 x:Name="CustomersCollection"
                 SelectionMode="Single"
-                SelectionChanged="Customers_SelectionChanged">
+                SelectionChanged="Customers_SelectionChanged"
+                MaximumHeightRequest="350">
                 <CollectionView.Header>
                     <Grid RowDefinitions="*, Auto" RowSpacing="10" ColumnDefinitions="2*,2*,3*,2*" Padding="5">
                         <Label Text="Förnamn" FontAttributes="Bold" />
