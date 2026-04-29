@@ -37,8 +37,8 @@ namespace PRG1_MAUI_ERP_Activum.View
         {
             string search = CustomerIdEntry.Text;
             List<Guid> customersFound = _service.Customers.Where(c =>
-                c.FirstName.ToLower().Contains(search.ToLower()) ||
-                c.LastName.ToLower().Contains(search.ToLower()) ||
+                ($"{c.FirstName} {c.LastName}".ToLower().Contains(search.ToLower())) ||
+                c.Email.ToLower().Contains(search.ToLower()) ||
                 c.Phone.Contains(search)
             ).Select(c => c.Id).ToList();
 

@@ -34,22 +34,17 @@ public partial class CustomersPage : ContentPage
     private void SearchCustomers_TextChanged(object sender, TextChangedEventArgs e)
     {
         string search = SearchCustomers.Text;
-        List<Guid> customersFound = new List<Guid>();
-        foreach (var customer in _service.Customers)
-        {
-            if (customer.FirstName.ToLower().Contains(search.ToLower()))
-            {
-                customersFound.Add(customer.Id);
-            }
-            else if (customer.LastName.ToLower().Contains(search.ToLower()))
-            {
-                customersFound.Add(customer.Id);
-            }
-            else if(customer.Phone.Contains(search))
-            {
-                customersFound.Add(customer.Id);
-            }
-        }
+        List<Guid> customersFound = _service.Customers.Where(c =>
+                ($"{c.FirstName} {c.LastName}".ToLower().Contains(search.ToLower())) ||
+                c.Email.ToLower().Contains(search.ToLower()) ||
+                c.Phone.Contains(search)
+            ).Select(c => c.Id).ToList();
+
         CustomersCollection.ItemsSource = _service.Customers.Where(c => customersFound.Contains(c.Id));
+    }
+
+    private void AddNewCustomer_Clicked(object sender, EventArgs e)
+    {
+        Shell.Current.GoToAsync("//NewCustomerPage");
     }
 }
