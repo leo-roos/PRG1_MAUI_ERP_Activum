@@ -62,7 +62,7 @@ namespace PRG1_MAUI_ERP_Activum.View
 
             if (string.IsNullOrWhiteSpace(notes))
             {
-                await DisplayAlertAsync("Fel", "Anteckningen är tom.", "OK");
+                await DisplayAlertAsync("Fel", "Anteckningen är tom.", "Ok");
                 return;
             }
             else
@@ -72,11 +72,11 @@ namespace PRG1_MAUI_ERP_Activum.View
                 {
                     newNote.CreatedDate = (DateTime)date;
                     SelectedCustomer.Notes.Add(newNote);
-                    await DisplayAlertAsync("Sparat", $"Anteckning sparad för datum: {date:d}", "OK");
+                    await DisplayAlertAsync("Sparat", $"Anteckning sparad för datum: {date:d}", "Ok");
                 }
                 else
                 {
-                    await DisplayAlertAsync("Fel", "Ingen kund vald.", "OK");
+                    await DisplayAlertAsync("Fel", "Ingen kund vald.", "Ok");
                     return;
 
                 }

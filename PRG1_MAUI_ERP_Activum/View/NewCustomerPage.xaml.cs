@@ -28,7 +28,7 @@ public partial class NewCustomerPage : ContentPage
                 Phone = PhoneNumberEntry.Text
             };
             _service.AddCustomer(newCustomer);
-            DisplayAlertAsync("Kund Tillagd", "Kunden har lagts till.", "OK");
+            DisplayAlertAsync("Kund Tillagd", "Kunden har lagts till.", "Ok");
 
             FirstNameEntry.Text = string.Empty;
             LastNameEntry.Text = string.Empty;
@@ -37,7 +37,7 @@ public partial class NewCustomerPage : ContentPage
         }
         else
         {
-            DisplayAlertAsync("Fel", "Vänligen fyll i alla fält.", "OK");
+            DisplayAlertAsync("Fel", "Vänligen fyll i alla fält.", "Ok");
         }
     }
 

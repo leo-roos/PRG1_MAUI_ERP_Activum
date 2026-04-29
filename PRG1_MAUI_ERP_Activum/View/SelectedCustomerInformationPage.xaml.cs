@@ -46,11 +46,11 @@ public partial class SelectedCustomerInformationPage : ContentPage
             };
             _service.UpdateCustomer(updatedCustomer);
             Title.Text = $"{updatedCustomer.FirstName} {updatedCustomer.LastName} - Kund Information";
-            DisplayAlertAsync("Kund Uppdaterad", "Kundinformationen har uppdaterats.", "OK");
+            DisplayAlertAsync("Kund Uppdaterad", "Kundinformationen har uppdaterats.", "Ok");
         }
         else
         {
-            DisplayAlertAsync("Fel", "Vänligen fyll i alla fält.", "OK");
+            DisplayAlertAsync("Fel", "Vänligen fyll i alla fält.", "Ok");
         }
     }
 

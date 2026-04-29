@@ -39,7 +39,7 @@ public partial class SelectedInsurancePage : ContentPage
             DisplayAlertAsync("Uppdatera Försäkringen", "Försäkringen har uppdaterats", "Ok");
         } else
         {
-            DisplayAlertAsync("Fel", "Vänligen fyll i alla fält.", "OK");
+            DisplayAlertAsync("Fel", "Vänligen fyll i alla fält.", "Ok");
         }
 
     }

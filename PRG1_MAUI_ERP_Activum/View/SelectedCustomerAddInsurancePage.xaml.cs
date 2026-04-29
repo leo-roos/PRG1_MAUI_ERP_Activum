@@ -49,7 +49,7 @@ public partial class SelectedCustomerAddInsurancePage : ContentPage
             {
                 if (EndDatePicker.Date < StartDatePicker.Date)
                 {
-                    DisplayAlertAsync("Fel", "Slutdatum kan inte vara före startdatum.", "OK");
+                    DisplayAlertAsync("Fel", "Slutdatum kan inte vara före startdatum.", "Ok");
                     return;
                 }
 
@@ -65,7 +65,7 @@ public partial class SelectedCustomerAddInsurancePage : ContentPage
             }
             else
             {
-                DisplayAlertAsync("Fel", "Ange en giltig typ och månadskostnad.", "OK");
+                DisplayAlertAsync("Fel", "Ange en giltig typ och månadskostnad.", "Ok");
             }
         }
     }

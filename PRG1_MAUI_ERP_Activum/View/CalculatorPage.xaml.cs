@@ -214,7 +214,7 @@ public partial class CalculatorPage : ContentPage
             case "/":
                 if (operandValue == 0) // Hantera division med noll
                 {
-                    DisplayAlertAsync("Fel!", "Division med noll är ej tillåtet.", "OK");
+                    DisplayAlertAsync("Fel!", "Division med noll är ej tillåtet.", "Ok");
                     Clear();
                     return;
                 }
