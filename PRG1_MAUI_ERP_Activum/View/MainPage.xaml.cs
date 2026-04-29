@@ -65,6 +65,16 @@ namespace PRG1_MAUI_ERP_Activum.View
                 await DisplayAlertAsync("Fel", "Anteckningen är tom.", "OK");
                 return;
             }
+            else
+            {
+                Note newNote = new Note(notes);
+                if (SelectedCustomer != null)
+                {
+                    newNote.CreatedDate = DatePickerField.Date;
+                    SelectedCustomer.Notes.Add(newNote);
+
+                }
+            }
 
             // TODO Skadeanmälan sparas inte just nu.
             await DisplayAlertAsync("Sparat", $"Anteckning sparad för datum: {date:d}", "OK");
