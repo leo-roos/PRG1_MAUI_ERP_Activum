@@ -16,7 +16,7 @@
                 VerticalOptions="Center" 
                 HorizontalOptions="Center" />
 
-            <Label Grid.Row="1" Text="Försäkringsdetaljer" FontAttributes="Bold" Margin="0,30,0,10" />
+            <Label Grid.Row="1" Text="Försäkringsdetaljer" FontAttributes="Bold" />
 
             <Label Grid.Row="2" Text="Typ" FontAttributes="Bold" />
             <Entry Grid.Row="3" x:Name="TypeEntry" Style="{StaticResource Key=ReadOnlyEntryStyle}" IsReadOnly="True" />

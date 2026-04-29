@@ -26,7 +26,6 @@
             >
                 <Label HorizontalOptions="Center" Style="{StaticResource SubHeadline}" Text="Beräkna Månadslön" />
                 <Label
-                    Margin="0, 0, 0, 10"
                     Text="Skriv in hur mycket försäljning du har gjort denna månad, du kommer få 12% provision av din försäljning för denna månad + din grundlön."
                 />
 
@@ -61,7 +60,6 @@
             >
                 <Label HorizontalOptions="Center" Style="{StaticResource SubHeadline}" Text="Beräkna Semesterlön" />
                 <Label
-                    Margin="0, 0, 0, 10"
                     Text="För att beräkna din semesterlön så behöver du ange din genomsmittliga försäljning från dem senaste 11 månaders arbete."
                 />
 
