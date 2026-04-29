@@ -16,8 +16,6 @@
                 VerticalOptions="Center" 
                 HorizontalOptions="Center" />
 
-            <Label Grid.Row="1" Text="Anteckningar" FontAttributes="Bold" Margin="0,30,0,10" />
-
             <CollectionView
                 Grid.Row="2"
                 x:Name="CustomerNotes">

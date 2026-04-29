@@ -5,7 +5,7 @@
              Title="Vald Kund"
              Style="{StaticResource Key=BasePageStyle}">
     <ScrollView>
-        <Grid RowDefinitions="Auto, Auto, Auto, Auto, *, Auto" Padding="10">
+        <Grid RowDefinitions="Auto, Auto, Auto, Auto, *, Auto" RowSpacing="10" Padding="10">
             <Label
                 x:Name="Title"
                 Grid.Row="0"
@@ -16,7 +16,7 @@
                 VerticalOptions="Center" 
                 HorizontalOptions="Center" />
 
-            <Label Grid.Row="1" Text="Försäkringar" FontAttributes="Bold" Margin="0,30,0,10" />
+            <Label Grid.Row="1" Text="Försäkringar" FontAttributes="Bold" />
 
             <CollectionView
                 Grid.Row="2"
