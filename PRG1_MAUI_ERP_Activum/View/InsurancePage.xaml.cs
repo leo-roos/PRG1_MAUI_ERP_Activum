@@ -27,8 +27,11 @@ public partial class InsurancePage : ContentPage
     private void Insurances_CollectionView_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
         var selectedinsurance = e.CurrentSelection.FirstOrDefault() as Insurance;
-
-        selectedInsuranceService.UpdateSelectedInsurace(selectedinsurance);
+        
+        if (selectedinsurance != null)
+        {
+            selectedInsuranceService.UpdateSelectedInsurace(selectedinsurance);
+        }
     }
 
     private void AddNewInsurance_Clicked(object sender, EventArgs e)
