@@ -72,12 +72,15 @@ namespace PRG1_MAUI_ERP_Activum.View
                 {
                     newNote.CreatedDate = (DateTime)date;
                     SelectedCustomer.Notes.Add(newNote);
+                    await DisplayAlertAsync("Sparat", $"Anteckning sparad för datum: {date:d}", "OK");
+                }
+                else
+                {
+                    await DisplayAlertAsync("Fel", "Ingen kund vald.", "OK");
+                    return;
 
                 }
             }
-
-            // TODO Skadeanmälan sparas inte just nu.
-            await DisplayAlertAsync("Sparat", $"Anteckning sparad för datum: {date:d}", "OK");
         }
 
         private void CustomersCollection_SelectionChanged(object sender, SelectionChangedEventArgs e)
