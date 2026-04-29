@@ -36,63 +36,21 @@ public partial class SelectedCustomerInsurancePage : ContentPage
             return;
         }
 
-        bool isCostChanged = false;
-        bool isStartDateChanged = false;
-        bool isEndDateChanged = false;
-
-        if (int.TryParse(CostEntry.Text, out int newCost))
+        if (!string.IsNullOrWhiteSpace(TypeEntry.Text)
+            && int.TryParse(CostEntry.Text, out int newCost)
+            && StartDatePicker.Date.HasValue
+            && StartDatePicker.Date.HasValue)
         {
-            if (newCost != selectedCustomerService.SelectedInsurance.MonthlyCost)
-            {
-                selectedCustomerService.SelectedInsurance.MonthlyCost = newCost;
-                isCostChanged = true;
-            }
+            selectedCustomerService.SelectedInsurance.Type = TypeEntry.Text;
+            selectedCustomerService.SelectedInsurance.MonthlyCost = newCost;
+            selectedCustomerService.SelectedInsurance.StartDate = StartDatePicker.Date.Value;
+            selectedCustomerService.SelectedInsurance.EndDate = EndDatePicker.Date.Value;
+            DisplayAlertAsync("Uppdatera Försäkringen", "Kundens försäkring har uppdaterats", "Ok");
         }
-
-        if (StartDatePicker.Date.HasValue)
+        else
         {
-            string currentDate = selectedCustomerService.SelectedInsurance.StartDate.ToString("yyyy-MM-dd");
-            string newDate = StartDatePicker.Date.Value.ToString("yyyy-MM-dd");
-            if (currentDate != newDate)
-            {
-                selectedCustomerService.SelectedInsurance.StartDate = StartDatePicker.Date.Value;
-                isStartDateChanged = true;
-            }
+            DisplayAlertAsync("Fel", "Vänligen fyll i alla fält.", "Ok");
         }
-
-        if (EndDatePicker.Date.HasValue)
-        {
-            string currentDate = selectedCustomerService.SelectedInsurance.EndDate.ToString("yyyy-MM-dd");
-            string newDate = EndDatePicker.Date.Value.ToString("yyyy-MM-dd");
-            if (currentDate != newDate)
-            {
-                selectedCustomerService.SelectedInsurance.EndDate = EndDatePicker.Date.Value;
-                isEndDateChanged = true;
-            }
-        }
-
-
-        string updateMessage = "Uppdaterade följande: ";
-        if (isCostChanged)
-        {
-            updateMessage += "Månads Pris, ";
-        }
-        if (isStartDateChanged)
-        {
-            updateMessage += "Start Datum, ";
-        }
-        if (isEndDateChanged)
-        {
-            updateMessage += "Slut Datum, ";
-        }
-        if (!isCostChanged && !isStartDateChanged && !isStartDateChanged)
-        {
-            updateMessage += "Inget";
-        }
-
-        DisplayAlertAsync("Uppdatera Försäkringen för Kunden", updateMessage, "Ok");
-
-        _service.UpdateInsurance(selectedCustomerService.SelectedInsurance);
     }
 
     private void GoBack_Clicked(object sender, EventArgs e)

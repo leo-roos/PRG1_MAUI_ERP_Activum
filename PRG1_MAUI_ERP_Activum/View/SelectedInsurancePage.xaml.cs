@@ -41,7 +41,6 @@ public partial class SelectedInsurancePage : ContentPage
         {
             DisplayAlertAsync("Fel", "Vänligen fyll i alla fält.", "Ok");
         }
-
     }
 
     private void GoBack_Clicked(object sender, EventArgs e)
