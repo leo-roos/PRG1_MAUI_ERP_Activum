@@ -28,5 +28,7 @@
             EndDate = insurance.EndDate;
             IsActive = insurance.IsActive;
         }
+
+        public Insurance() { }
     }
 }
