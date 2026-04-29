@@ -73,7 +73,7 @@ namespace PRG1_MAUI_ERP_Activum.View
             }
             else
             {
-                CustomerInsurances.ItemsSource = _service.GetInsurancesForCustomer(newCustomer);
+                CustomerInsurances.ItemsSource = _service.GetInsurancesForCustomer(newCustomer.Id);
             }
 
             SelectedCustomer = newCustomer;
