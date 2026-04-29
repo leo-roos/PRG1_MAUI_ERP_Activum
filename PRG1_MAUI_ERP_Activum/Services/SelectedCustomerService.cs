@@ -36,8 +36,6 @@ namespace PRG1_MAUI_ERP_Activum.Services
         {
             SelectedCustomer = newCustomer;
             SelectedInsurance = null;
-
-            GotoPage();
         }
 
         public void UpdateSelectedInsurace(Insurance? newInsurance)
@@ -45,8 +43,6 @@ namespace PRG1_MAUI_ERP_Activum.Services
             if (SelectedCustomer != null)
             {
                 SelectedInsurance = newInsurance;
-
-                GotoPage();
             }
         }
 

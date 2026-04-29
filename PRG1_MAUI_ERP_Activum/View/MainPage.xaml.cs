@@ -103,7 +103,12 @@ namespace PRG1_MAUI_ERP_Activum.View
         private void CustomerInsurances_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var newInsurance = e.CurrentSelection.FirstOrDefault() as Insurance;
-
+            
+            if (newInsurance == null)
+            {
+                selectedCustomerService.UpdateSelectedCustomer(null);
+                return;
+            }
             selectedCustomerService.UpdateSelectedCustomer(SelectedCustomer);
             selectedCustomerService.UpdateSelectedInsurace(newInsurance);
             selectedCustomerService.GotoPage();

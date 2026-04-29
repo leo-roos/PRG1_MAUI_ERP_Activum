@@ -29,6 +29,7 @@ public partial class CustomersPage : ContentPage
         var selected = e.CurrentSelection.FirstOrDefault() as Customer;
 
         selectedCustomerService.UpdateSelectedCustomer(selected);
+        selectedCustomerService.GotoPage();
     }
 
     private void SearchCustomers_TextChanged(object sender, TextChangedEventArgs e)
