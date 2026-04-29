@@ -48,6 +48,6 @@ public partial class SelectedCustomerPage : ContentPage
 
     private void EditCustomerInfo_Clicked(object sender, EventArgs e)
     {
-
+        selectedCustomerService.ViewInformation();
     }
 }
